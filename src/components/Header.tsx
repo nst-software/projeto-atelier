@@ -15,6 +15,7 @@ import { Routes } from "../utils/enums/Routes";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { theme } from "../Style/Theme";
+import logo from "../assets/LogoEscrita.pdf";
 
 const useStyles = makeStyles(() => ({
   headerLogo: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: theme.palette.primary.main,
     margin: 0,
     padding: 0,
-    maxHeight: "150px",
+    maxHeight: "110px",
     boxShadow:
       "rgba(255, 255, 255 ,0.3) 0px 1px 2px 0px, rgba(255, 255, 255 ,0.15) 0px 2px 6px 2px",
   },
@@ -116,7 +117,11 @@ const Header: FC = () => {
         {drawer}
       </Drawer>
       <Toolbar className={classes.headerTollbar}>
-        <img className={classes.headerLogo} onClick={() => navigate(`/`)} />
+        <img
+          src={logo}
+          className={classes.headerLogo}
+          onClick={() => navigate(`/`)}
+        />
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
           {Routes.values.map((page) => (
             <Button
@@ -127,7 +132,7 @@ const Header: FC = () => {
             >
               <Typography
                 color={theme.palette.primary.contrastText}
-                fontWeight={600}
+                fontWeight={400}
                 fontSize="18px"
               >
                 {Routes.getLabel(page)}
