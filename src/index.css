@@ -2,3 +2,23 @@ body {
     margin: 0;
     padding: 0;
   }
+  ::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem vertical */
+    height: 8px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Estiliza a "track" da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #F0E3D6; 
+}
+
+/* Estiliza o "thumb" da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: orange; 
+    border-radius: 200px;
+}
+
+/* Estiliza o "thumb" da barra de rolagem quando está sendo usado */
+::-webkit-scrollbar-thumb:hover {
+    background: orange; 
+}

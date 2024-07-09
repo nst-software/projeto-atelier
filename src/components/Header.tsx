@@ -15,7 +15,7 @@ import { Routes } from "../utils/enums/Routes";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { theme } from "../Style/Theme";
-import logo from "../assets/LogoEscrita.pdf";
+import logo from "../assets/LogoEscrita.svg";
 
 const useStyles = makeStyles(() => ({
   headerLogo: {
