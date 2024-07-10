@@ -19,7 +19,7 @@ import logo from "../assets/LogoEscrita.svg";
 
 const useStyles = makeStyles(() => ({
   headerLogo: {
-    height: "150px",
+    height: "110px",
     cursor: "pointer",
   },
 
@@ -102,7 +102,7 @@ const Header: FC = () => {
   );
 
   return (
-    <AppBar position="static" className={classes.headerAppBar}>
+    <AppBar position="fixed" className={classes.headerAppBar}>
       <Drawer
         variant="temporary"
         open={mobileOpen}

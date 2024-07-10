@@ -5,7 +5,9 @@ function App() {
   return (
     <>
       <Header />
-      <Outlet />
+      <div style={{ marginTop: "110px" }}>
+        <Outlet />
+      </div>
     </>
   );
 }

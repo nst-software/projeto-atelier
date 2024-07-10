@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 body {
     margin: 0;
     padding: 0;
+    background-color: #E4D2C1;
+    font-family: 'Lato', sans-serif;
   }
   ::-webkit-scrollbar {
     width: 8px; /* Largura da barra de rolagem vertical */

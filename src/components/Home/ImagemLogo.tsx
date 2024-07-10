@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     overflow: "hidden",
     aspectRatio: "16 / 6",
+    backgroundColor: "#ffffff",
   },
   logo: { maxWidth: "40%", zIndex: 1 },
   floral1: { position: "absolute", top: "0", left: "-20%", width: "60%" },

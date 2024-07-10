@@ -3,7 +3,7 @@ import { theme } from "../../Style/Theme";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
-    minHeight: "20vh",
+    minHeight: "25vh",
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     display: "flex",
     marginLeft: "5%",
+    textAlign: "center",
   },
   text1: {
     color: theme.palette.secondary.contrastText,
@@ -25,6 +26,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
+    textAlign: "center",
   },
   text2: {
     color: theme.palette.secondary.contrastText,
@@ -36,10 +38,11 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     display: "flex",
     marginRight: "5%",
+    textAlign: "center",
   },
   text3: {
     color: theme.palette.secondary.contrastText,
-    fontSize: "0.8rem",
+    fontSize: "1rem",
   },
 }));
 
@@ -56,8 +59,7 @@ const BalaoDeTexto1 = () => {
       </div>
       <div className={classes.divText3}>
         <p className={classes.text3}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil eos
-          velit recusandae ducimus.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
     </div>
