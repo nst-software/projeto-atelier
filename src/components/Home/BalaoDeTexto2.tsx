@@ -3,17 +3,18 @@ import { theme } from "../../Style/Theme";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
-    height: "20vh",
+    minHeight: "20vh",
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: theme.palette.primary.main,
   },
   divText1: {
-    width: "40%",
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
+    padding: "5%",
+    textAlign: "center",
   },
   text1: {
     color: theme.palette.primary.contrastText,

@@ -6,25 +6,26 @@ import floral3 from "../../assets/ImagemFundo1/floralBuque03.png";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
-    height: "75vh",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     position: "relative",
     overflow: "hidden",
+    aspectRatio: "16 / 6",
   },
   logo: { maxWidth: "40%", zIndex: 1 },
-  floral1: { position: "absolute", top: "0", left: "-300px", width: "60%" },
+  floral1: { position: "absolute", top: "0", left: "-20%", width: "60%" },
   floral2: {
     position: "absolute",
-    bottom: "-200px",
+    bottom: "-30%",
     right: "0",
     width: "45%",
     transform: "rotate(-30deg)",
   },
   floral3: {
     position: "absolute",
-    top: "-30px",
-    right: "-80px",
+    top: "-10%",
+    right: "-8%",
     width: "35%",
   },
 }));
