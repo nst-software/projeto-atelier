@@ -11,7 +11,6 @@ const Home: FC = () => {
       <BalaoDeTexto1 />
       <BalaoDeTexto2 />
       <QuemSomos />
-      <h1>Welcome to the Home page!</h1>
     </div>
   );
 };
