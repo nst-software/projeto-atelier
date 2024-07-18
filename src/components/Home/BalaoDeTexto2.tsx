@@ -13,7 +13,8 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
-    padding: "5%",
+    width: "80%",
+    padding: "3%",
     textAlign: "center",
   },
   text1: {

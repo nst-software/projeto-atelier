@@ -17,7 +17,7 @@ body {
 
 /* Estiliza o "thumb" da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-    background: orange; 
+    background: #7b0708; 
     border-radius: 200px;
 }
 

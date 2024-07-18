@@ -3,7 +3,7 @@ import { theme } from "../../Style/Theme";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
-    minHeight: "25vh",
+    minHeight: "22vh",
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",

@@ -91,9 +91,9 @@ export const Footer = () => {
         </div>
         <div className={classes.divInfo}>
           <p>Endereço: Rua das Flores, 123</p>
-          <p>cep: 99999-999</p>
+          <p>CEP: 99999-999</p>
           <p>Telefone:(99)99999-9999</p>
-          <p>Email:email@trademail.com</p>
+          <p>E-mail:email@trademail.com</p>
           <div>
             <InstagramIcon />
             <WhatsApp />
