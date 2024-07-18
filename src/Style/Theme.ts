@@ -27,4 +27,6 @@ export const theme = createTheme({
   typography: {
     fontFamily: 'lato, sans-serif',
   },
-});
+  
+}
+);

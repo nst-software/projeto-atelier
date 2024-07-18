@@ -1,3 +1,4 @@
+import React from "react";
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
 
@@ -23,30 +24,32 @@ const useStyles = makeStyles(() => ({
     width: "100%",
   },
   card: {
+    backgroundColor: theme.palette.secondary.main,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "230px",
-    height: "300px",
-    borderRadius: "10px",
+    gap: "1rem",
+    width: "200px",
+    height: "330px",
+    borderRadius: "30px",
     padding: "1rem",
-    border: "1px solid black",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     [theme.breakpoints.down("sm")]: {
-      width: "85%",
+      width: "90%",
       height: "200px",
     },
   },
 }));
 
-const SelosDeQualidade = () => {
+const NossasAtividades: React.FC = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.containerPrincipal}>
-      <h2 className={classes.text1}>CERTIFICADOS</h2>
+      <h2 className={classes.text1}>NOSSAS ATIVIDADES</h2>
       <div className={classes.divCards}>
+        <div className={classes.card}> </div>
         <div className={classes.card}> </div>
         <div className={classes.card}> </div>
         <div className={classes.card}> </div>
@@ -55,4 +58,4 @@ const SelosDeQualidade = () => {
   );
 };
 
-export default SelosDeQualidade;
+export default NossasAtividades;

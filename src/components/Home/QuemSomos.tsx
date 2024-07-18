@@ -7,6 +7,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: theme.palette.secondary.main,
     borderRadius: "25px",
     width: "95%",
+    overflow: "hidden",
   },
   containerTexto: {
     display: "flex",
