@@ -38,6 +38,11 @@ const useStyles = makeStyles(() => ({
       height: "200px",
     },
   },
+  separator: {
+    width: "75%",
+    borderTop: `1px solid ${theme.palette.secondary.main}`,
+    margin: "4rem 0",
+  },
 }));
 
 const SelosDeQualidade = () => {
@@ -51,6 +56,7 @@ const SelosDeQualidade = () => {
         <div className={classes.card}> </div>
         <div className={classes.card}> </div>
       </div>
+      <div className={classes.separator}></div>
     </div>
   );
 };
