@@ -20,6 +20,9 @@ const useStyles = makeStyles(() => ({
   text1: {
     color: theme.palette.secondary.contrastText,
     fontSize: "1.5rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
+    },
   },
   divText2: {
     width: "30%",
@@ -31,6 +34,9 @@ const useStyles = makeStyles(() => ({
   text2: {
     color: theme.palette.secondary.contrastText,
     fontSize: "2.5rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2rem",
+    },
   },
   divText3: {
     width: "25%",
@@ -42,7 +48,9 @@ const useStyles = makeStyles(() => ({
   },
   text3: {
     color: theme.palette.secondary.contrastText,
-    fontSize: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.7rem",
+    },
   },
 }));
 

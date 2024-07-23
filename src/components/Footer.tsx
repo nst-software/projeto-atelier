@@ -46,8 +46,8 @@ const useStyles = makeStyles(() => ({
   divInfo: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "normal",
     width: "30%",
+    gap: "-10rem",
     [theme.breakpoints.down("sm")]: {
       width: "50%",
     },

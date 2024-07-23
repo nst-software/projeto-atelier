@@ -23,5 +23,5 @@ body {
 
 /* Estiliza o "thumb" da barra de rolagem quando está sendo usado */
 ::-webkit-scrollbar-thumb:hover {
-    background: orange; 
+    background: #7b0708; 
 }

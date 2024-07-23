@@ -16,10 +16,17 @@ const useStyles = makeStyles(() => ({
     width: "80%",
     padding: "3%",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+    },
   },
   text1: {
     color: theme.palette.primary.contrastText,
     fontSize: "2rem",
+    maxFontSize: "2.5vw",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+    },
   },
 }));
 

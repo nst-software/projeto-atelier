@@ -14,6 +14,9 @@ const useStyles = makeStyles(() => ({
     marginLeft: "10%",
     flexDirection: "column",
     maxWidth: "70%",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "90%",
+    },
   },
   texto: {
     color: theme.palette.secondary.contrastText,
