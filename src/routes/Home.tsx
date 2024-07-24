@@ -6,6 +6,8 @@ import QuemSomos from "../components/Home/QuemSomos";
 import SelosDeQualidade from "../components/Home/SelosDeQualidade";
 import NossasAtividades from "../components/Home/NossasAtividades";
 import Contato from "../components/Home/Contato";
+import OQueProcura from "../components/Home/oQueProcura";
+import Instagram from "../components/Home/Instagram";
 
 const Home: FC = () => {
   return (
@@ -15,8 +17,10 @@ const Home: FC = () => {
       <BalaoDeTexto2 />
       <QuemSomos />
       <SelosDeQualidade />
+      <OQueProcura />
       <NossasAtividades />
       <Contato />
+      <Instagram />
     </div>
   );
 };

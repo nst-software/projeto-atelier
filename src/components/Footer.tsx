@@ -90,14 +90,17 @@ export const Footer = () => {
           ))}
         </div>
         <div className={classes.divInfo}>
-          <p>Endereço: Rua das Flores, 123</p>
-          <p>CEP: 99999-999</p>
-          <p>Telefone:(99)99999-9999</p>
-          <p>E-mail:email@trademail.com</p>
-          <div>
+          <p style={{ lineHeight: "1.8" }}>
+            Endereço: Rua das Flores, 123
+            <br />
+            CEP: 99999-999
+            <br />
+            Telefone:(99)99999-9999
+            <br />
+            E-mail:email@trademail.com <br />
             <InstagramIcon />
             <WhatsApp />
-          </div>
+          </p>
         </div>
       </footer>
       <div className={classes.separator}></div>

@@ -7,6 +7,12 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
+    marginBottom: "2rem",
+  },
+  text1: {
+    fontSize: "1.6rem",
+    fontWeight: 400,
+    color: theme.palette.primary.contrastText,
   },
   divCards: {
     display: "flex",
@@ -22,15 +28,13 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "230px",
-    height: "300px",
     borderRadius: "10px",
     padding: "1rem",
     border: "1px solid black",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    [theme.breakpoints.down("sm")]: {
-      width: "85%",
-      height: "200px",
+    cursor: "pointer",
+    "&:hover": {
+      padding: "1.2rem",
     },
   },
 }));
@@ -40,11 +44,20 @@ const OQueProcura: React.FC = () => {
 
   return (
     <div className={classes.containerPrincipal}>
+      <h2 className={classes.text1}>O QUE PROCURA</h2>
       <div className={classes.divCards}>
-        <div className={classes.card}> </div>
-        <div className={classes.card}> </div>
-        <div className={classes.card}> </div>
-        <div className={classes.card}> </div>
+        <div className={classes.card}>
+          <h3>Lorem ipsum dolor</h3>
+        </div>
+        <div className={classes.card}>
+          <h3>Lorem ipsum dolor</h3>{" "}
+        </div>
+        <div className={classes.card}>
+          <h3>Lorem ipsum dolor</h3>{" "}
+        </div>
+        <div className={classes.card}>
+          <h3>Lorem ipsum dolor</h3>
+        </div>
       </div>
     </div>
   );

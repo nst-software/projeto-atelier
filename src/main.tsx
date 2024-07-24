@@ -6,6 +6,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./Style/Theme.ts";
 import Home from "./routes/Home.tsx";
 import "./index.css";
+import Catalogo from "./routes/Catalogo.tsx";
+import FaleConosco from "./routes/FaleConosco.tsx";
+import QuemSomos from "./routes/QuemSomos copy.tsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,9 @@ const router = createBrowserRouter([
         path: "",
         element: <Home />,
       },
+      { path: "catalogo", element: <Catalogo /> },
+      { path: "fale-conosco", element: <FaleConosco /> },
+      { path: "quemSomos", element: <QuemSomos /> },
     ],
   },
 ]);

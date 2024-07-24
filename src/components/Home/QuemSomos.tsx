@@ -1,6 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
 import video from "../../assets/vecteezy-assortment-of-fabrics-in-textile-store-many-colorful-and-23222036-1_GmPaDAdH.mp4";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles(() => ({
     maxWidth: "70%",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "90%",
+      marginLeft: "5%",
     },
   },
   texto: {
@@ -73,7 +75,7 @@ const useStyles = makeStyles(() => ({
 
 function QuemSomos() {
   const classes = useStyles();
-
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -107,7 +109,12 @@ function QuemSomos() {
           />
         </div>
         <div className={classes.divButton}>
-          <button className={classes.button}>Saiba mais</button>
+          <button
+            className={classes.button}
+            onClick={() => navigate(`quemSomos`)}
+          >
+            Saiba mais
+          </button>
         </div>
       </div>
     </div>
