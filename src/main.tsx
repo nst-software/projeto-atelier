@@ -10,21 +10,21 @@ import Catalogo from "./routes/Catalogo.tsx";
 import FaleConosco from "./routes/FaleConosco.tsx";
 import QuemSomos from "./routes/QuemSomos copy.tsx";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      { path: "catalogo", element: <Catalogo /> },
-      { path: "fale-conosco", element: <FaleConosco /> },
-      { path: "quemSomos", element: <QuemSomos /> },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        { path: "", element: <Home /> },
+        { path: "catalogo", element: <Catalogo /> },
+        { path: "fale-conosco", element: <FaleConosco /> },
+        { path: "quemSomos", element: <QuemSomos /> },
+      ],
+    },
+  ],
+  { basename: "/projeto-atelier" },
+);
 
 const container = document.getElementById("root");
 if (container) {
