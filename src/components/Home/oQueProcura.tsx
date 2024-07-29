@@ -35,6 +35,17 @@ const useStyles = makeStyles(() => ({
     cursor: "pointer",
     "&:hover": {
       padding: "1.2rem",
+      [theme.breakpoints.down("sm")]: {
+        width: "45%",
+      },
+    },
+  },
+  textCard: {
+    fontSize: "1.2rem",
+    fontWeight: 400,
+    color: theme.palette.primary.contrastText,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "4vw",
     },
   },
 }));
@@ -47,16 +58,16 @@ const OQueProcura: React.FC = () => {
       <h2 className={classes.text1}>O QUE PROCURA</h2>
       <div className={classes.divCards}>
         <div className={classes.card}>
-          <h3>Lorem ipsum dolor</h3>
+          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>
         </div>
         <div className={classes.card}>
-          <h3>Lorem ipsum dolor</h3>{" "}
+          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>{" "}
         </div>
         <div className={classes.card}>
-          <h3>Lorem ipsum dolor</h3>{" "}
+          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>{" "}
         </div>
         <div className={classes.card}>
-          <h3>Lorem ipsum dolor</h3>
+          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>
         </div>
       </div>
     </div>
