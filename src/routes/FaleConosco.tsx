@@ -1,9 +1,10 @@
 import { FC } from "react";
+import ImagemLogo from "../components/Home/ImagemLogo";
 
 const FaleConosco: FC = () => {
   return (
     <div>
-      <h1>FaleConosco</h1>
+      <ImagemLogo />
     </div>
   );
 };

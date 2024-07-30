@@ -1,9 +1,16 @@
 import { FC } from "react";
+import ImagemTexto from "../components/QuemSomos/ImagemTexto";
+import Video from "../components/QuemSomos/Video";
+import Atividades from "../components/QuemSomos/Atividades";
+import SelosDeQualidade from "../components/Home/SelosDeQualidade";
 
 const QuemSomos: FC = () => {
   return (
     <div>
-      <h1>QuemSomos</h1>
+      <ImagemTexto />
+      <Video />
+      <Atividades />
+      <SelosDeQualidade />
     </div>
   );
 };
