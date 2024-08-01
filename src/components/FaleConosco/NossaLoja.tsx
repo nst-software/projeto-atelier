@@ -1,0 +1,72 @@
+import React from "react";
+import { makeStyles } from "@mui/styles";
+import { theme } from "../../Style/Theme";
+import MapComponent from "./MapaLoja";
+import { Margin } from "@mui/icons-material";
+
+const useStyles = makeStyles(() => ({
+  divPrincipal: {
+    display: "flex",
+
+    justifyContent: "center",
+    flexDirection: "column",
+    width: "100%",
+  },
+  titulo: {
+    fontSize: "2rem",
+    color: theme.palette.primary.contrastText,
+    marginTop: "2rem",
+    marginLeft: "15%",
+  },
+  texto: {
+    fontSize: "1rem",
+    color: theme.palette.primary.contrastText,
+    width: "90%",
+    marginLeft: "15%",
+  },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+    },
+  },
+  mapaLoja: {
+    width: "50%",
+
+    marginLeft: "5%",
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+      marginTop: "2rem",
+      marginLeft: "10%",
+      overFlow: "hidden",
+    },
+  },
+}));
+
+const NossaLoja: React.FC = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.divPrincipal}>
+      <h2 className={classes.titulo}>Nossa Loja</h2>
+      <div className={classes.container}>
+        <div>
+          <p className={classes.texto}>(99)99999-9999</p>
+          <p className={classes.texto}>
+            Endereço: Rua das Flores, 123 CEP: 99999-999
+          </p>
+        </div>
+        <div className={classes.mapaLoja}>
+          <MapComponent />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NossaLoja;
