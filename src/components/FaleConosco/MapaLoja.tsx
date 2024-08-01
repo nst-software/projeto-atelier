@@ -16,7 +16,15 @@ const MapComponent = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       <Marker position={center}>
-        <Popup>Localização desejada.</Popup>
+        <Popup>
+          <div
+            onClick={() =>
+              window.open("https://www.instagram.com/tecidosateliedos")
+            }
+          >
+            <h1>Localização desejada.</h1>
+          </div>
+        </Popup>
       </Marker>
     </MapContainer>
   );
