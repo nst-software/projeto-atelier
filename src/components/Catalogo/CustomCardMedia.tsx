@@ -12,11 +12,11 @@ const CustomCardMedia: FC<CustomCardMediaProps> = ({ images, title }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setImage(images[Math.floor(Math.random() * images.length)]);
-    }, 3000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [images]);
 
-  return <CardMedia component="img" height="140" image={image} alt={title} />;
+  return <CardMedia component="img" image={image} alt={title} />;
 };
 
 export default CustomCardMedia;

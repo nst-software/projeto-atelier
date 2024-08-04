@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
 import MapComponent from "./MapaLoja";
-import { Margin } from "@mui/icons-material";
 
 const useStyles = makeStyles(() => ({
   divPrincipal: {
