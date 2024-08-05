@@ -45,6 +45,12 @@ const useStyles = makeStyles(() => ({
       overFlow: "hidden",
     },
   },
+  separator: {
+    width: "75%",
+    borderTop: `1px solid ${theme.palette.primary.contrastText}`,
+    margin: "20px 0",
+    marginLeft: "13.5%",
+  },
 }));
 
 const NossaLoja: React.FC = () => {
@@ -53,6 +59,7 @@ const NossaLoja: React.FC = () => {
   return (
     <div className={classes.divPrincipal}>
       <h2 className={classes.titulo}>Nossa Loja</h2>
+      <div className={classes.separator}></div>
       <div className={classes.container}>
         <div>
           <p className={classes.texto}>(99)99999-9999</p>

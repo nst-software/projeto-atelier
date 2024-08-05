@@ -101,7 +101,6 @@ function QuemSomos() {
           <video
             className={classes.video}
             src={video}
-            controls
             title="Video Quem Somos nós"
             autoPlay
             muted

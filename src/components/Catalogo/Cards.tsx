@@ -8,9 +8,10 @@ import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles(() => ({
   card: {
     margin: "2rem",
-    marginTop: "0",
+    marginTop: "2rem",
     marginBottom: "0",
     cursor: "pointer",
+    backgroundColor: theme.palette.secondary.main,
   },
   divPrincipal: {
     display: "flex",
@@ -21,8 +22,9 @@ const useStyles = makeStyles(() => ({
   },
   texto: {
     fontSize: "2vw",
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.secondary.contrastText,
     cursor: "pointer",
+    textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       fontSize: "5vw",
     },
@@ -247,15 +249,16 @@ const Cards: FC = () => {
       >
         {catalogos.map((item) => (
           <div className={classes.divCard}>
-            <h2 className={classes.texto} onClick={() => navigate(item.rota)}>
-              {item.name}
-            </h2>
             <Card
               key={item.id}
               className={classes.card}
               onClick={() => navigate(item.rota)}
+              sx={{ backgroundColor: theme.palette.secondary.main }}
             >
               <CustomCardMedia images={item.images} title={item.name} />
+              <h2 className={classes.texto} onClick={() => navigate(item.rota)}>
+                {item.name}
+              </h2>
             </Card>
           </div>
         ))}

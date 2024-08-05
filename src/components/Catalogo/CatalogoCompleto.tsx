@@ -8,7 +8,6 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    backgroundColor: theme.palette.secondary.main,
   },
   divButton: {
     display: "flex",
@@ -20,14 +19,14 @@ const useStyles = makeStyles(() => ({
   button: {
     color: theme.palette.secondary.contrastText,
     borderRadius: "40px",
-    padding: "13px 28px",
-    fontSize: "1.2rem",
+    padding: "18px 34px",
+    fontSize: "1.5rem",
     fontWeight: "bold",
     backgroundColor: theme.palette.secondary.main,
     cursor: "pointer",
     border: `3px solid ${theme.palette.primary.main}`,
     "&:hover": {
-      padding: "16px 32px",
+      padding: "20px 38px",
     },
   },
 }));
