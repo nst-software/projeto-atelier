@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: "0",
     cursor: "pointer",
     backgroundColor: theme.palette.secondary.main,
+    width: "80%",
   },
   divPrincipal: {
     display: "flex",
@@ -253,7 +254,10 @@ const Cards: FC = () => {
               key={item.id}
               className={classes.card}
               onClick={() => navigate(item.rota)}
-              sx={{ backgroundColor: theme.palette.secondary.main }}
+              sx={{
+                backgroundColor: theme.palette.secondary.main,
+                borderRadius: "25px",
+              }}
             >
               <CustomCardMedia images={item.images} title={item.name} />
               <h2 className={classes.texto} onClick={() => navigate(item.rota)}>

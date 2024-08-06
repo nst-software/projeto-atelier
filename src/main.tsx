@@ -9,6 +9,8 @@ import "./index.css";
 import Catalogo from "./routes/Catalogo.tsx";
 import FaleConosco from "./routes/FaleConosco.tsx";
 import QuemSomos from "./routes/QuemSomos copy.tsx";
+import Abstratas from "./routes/Catalogos/Abstratas.tsx";
+import AnimalPrint from "./components/QuemSomos/AnimalPrint.tsx";
 
 const router = createBrowserRouter(
   [
@@ -18,6 +20,8 @@ const router = createBrowserRouter(
       children: [
         { path: "", element: <Home /> },
         { path: "catalogo", element: <Catalogo /> },
+        { path: "catalogo/abstratas", element: <Abstratas /> },
+        { path: "catalogo/animal-print", element: <AnimalPrint /> },
         { path: "fale-conosco", element: <FaleConosco /> },
         { path: "quemSomos", element: <QuemSomos /> },
       ],
