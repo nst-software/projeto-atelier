@@ -1,273 +1,183 @@
-import { FC } from "react";
 import Card from "@mui/material/Card";
 import CustomCardMedia from "./CustomCardMedia";
-import { makeStyles } from "@mui/styles";
-import { theme } from "../../Style/Theme";
 import { useNavigate } from "react-router-dom";
-
-const useStyles = makeStyles(() => ({
-  card: {
-    margin: "2rem",
-    marginTop: "2rem",
-    marginBottom: "0",
-    cursor: "pointer",
-    backgroundColor: theme.palette.secondary.main,
-    width: "80%",
-  },
-  divPrincipal: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    width: "100%",
-  },
-  texto: {
-    fontSize: "2vw",
-    color: theme.palette.secondary.contrastText,
-    cursor: "pointer",
-    textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "5vw",
-    },
-  },
-  divCard: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "32%",
-    [theme.breakpoints.down("sm")]: {
-      width: "85%",
-    },
-  },
-}));
+import image1 from "../../assets/IMG.jpg";
+import logo from "../../assets/ATELIER-LOGO.png";
+import placeholder1 from "../../assets/placeholder_image1.png";
+import placeholder2 from "../../assets/placeholder_image2.png";
+import {
+  CardActionArea,
+  CardContent,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
+import { theme } from "../../Style/Theme";
 
 const catalogos = [
   {
     id: 1,
     name: "Abstratas",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/abstratas",
   },
   {
     id: 2,
     name: "Animal Print",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/animal-print",
   },
   {
     id: 3,
     name: "Barrados",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/barrados",
   },
   {
     id: 4,
     name: "Bolados-Poa",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/bolados-poa",
   },
   {
     id: 5,
     name: "Étnicas",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/etnicas",
   },
   {
     id: 6,
     name: "Figurativos Românticos",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/figurativos-romanticos",
   },
   {
     id: 7,
     name: "Florais Clássicos",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/florais-classicos",
   },
   {
     id: 8,
     name: "Florais Românticos",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/florais-romanticos",
   },
   {
     id: 9,
     name: "Folhagens",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/folhagens",
   },
   {
     id: 10,
     name: "Geométricos",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/geometricos",
   },
   {
     id: 11,
     name: "Infantil Bebês",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/infantil-bebes",
   },
   {
     id: 12,
     name: "Infantil Feminino",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/infantil-feminino",
   },
   {
     id: 13,
     name: "Infantil Masculino",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/infantil-masculino",
   },
   {
     id: 14,
     name: "Liberty",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/liberty",
   },
   {
     id: 15,
     name: "Listradas",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/listradas",
   },
   {
     id: 16,
     name: "Masculinas",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/masculinas",
   },
   {
     id: 17,
     name: "Pareôs",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/pareos",
   },
   {
     id: 18,
     name: "Tropical",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/tropical",
   },
   {
     id: 19,
     name: "Xadrez",
-    images: [
-      "src/assets/IMG.jpg",
-      "src/assets/ATELIER-LOGO.png",
-      "src/assets/IMG.jpg",
-    ],
+    images: [image1, logo, placeholder1, placeholder2],
     rota: "/catalogo/xadrez",
   },
 ];
 
-const Cards: FC = () => {
-  const classes = useStyles();
+const Cards: React.FC = () => {
   const navigate = useNavigate();
+
   return (
-    <div className={classes.divPrincipal}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
+    <Container>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        alignItems="center"
+        justifyContent="center"
       >
         {catalogos.map((item) => (
-          <div className={classes.divCard}>
+          <Grid item xs={12} sm={6} md={4} key={item.id}>
             <Card
-              key={item.id}
-              className={classes.card}
-              onClick={() => navigate(item.rota)}
               sx={{
                 backgroundColor: theme.palette.secondary.main,
-                borderRadius: "25px",
+                borderRadius: "15px",
+                width: "100%",
+                height: "100%",
+                transition: "0.3s",
+                "&:hover": {
+                  transform: "scale(1.02)",
+                  cursor: "pointer",
+                },
               }}
             >
-              <CustomCardMedia images={item.images} title={item.name} />
-              <h2 className={classes.texto} onClick={() => navigate(item.rota)}>
-                {item.name}
-              </h2>
+              <CardActionArea onClick={() => navigate(item.rota)}>
+                <div style={{ width: "100%", height: "300px" }}>
+                  <CustomCardMedia images={item.images} title={item.name} />
+                </div>
+                <CardContent>
+                  <Typography
+                    color={theme.palette.common.white}
+                    variant="h6"
+                    component="h2"
+                    textAlign="center"
+                  >
+                    {item.name}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
-          </div>
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Container>
   );
 };
 

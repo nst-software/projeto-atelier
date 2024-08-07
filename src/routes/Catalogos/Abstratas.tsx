@@ -1,83 +1,88 @@
 import { FC } from "react";
-import { makeStyles } from "@mui/styles";
-import { theme } from "../../Style/Theme";
+import {
+  Container,
+  Grid,
+  Card,
+  CardActionArea,
+  CardContent,
+  Typography,
+} from "@mui/material";
+import CustomCardMedia from "../../components/Catalogo/CustomCardMedia";
 import abstrata1 from "../../assets/IMG.jpg";
+import { theme } from "../../Style/Theme";
 
 const abstratas = [
   {
     id: 1,
-    name: "Abstratas 1",
+    name: "Abstrata Lorem",
     image: abstrata1,
   },
   {
     id: 2,
-    name: "Abstratas 2",
+    name: "Abstratas Ipsum",
     image: abstrata1,
   },
   {
     id: 3,
-    name: "Abstratas 3",
+    name: "Abstratas Dolor",
     image: abstrata1,
   },
 ];
 
-const useStyles = makeStyles(() => ({
-  divPrincipal: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    width: "100%",
-  },
-  card: {
-    margin: "2rem",
-    marginTop: "2rem",
-    marginBottom: "0",
-    overflow: "hidden",
-  },
-  divCard: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "32%",
-    [theme.breakpoints.down("sm")]: {
-      width: "85%",
-    },
-  },
-}));
-/* Catalogo pra floral */
 const Abstratas: FC = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.divPrincipal}>
-      <h1>Abstratas</h1>
+    <Container>
       <div
         style={{
+          marginBottom: "30px",
           display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
           justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100px",
         }}
       >
-        {abstratas.map((item) => (
-          <div className={classes.divCard}>
-            <div
-              key={item.id}
-              className={classes.card}
-              style={{ borderRadius: "25px" }}
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                style={{ width: "100%", overflow: "hidden" }}
-              />
-            </div>
-          </div>
-        ))}
+        <Typography variant="h4" component="h1" textAlign="center">
+          Abstratas
+        </Typography>
       </div>
-    </div>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        alignItems="center"
+        justifyContent="center"
+      >
+        {abstratas.map((item) => (
+          <Grid item xs={12} sm={6} md={4} key={item.id}>
+            <Card
+              sx={{
+                borderRadius: "15px",
+                width: "100%",
+                height: "100%",
+                backgroundColor: theme.palette.secondary.main,
+              }}
+            >
+              <CardActionArea>
+                <div style={{ width: "100%", height: "300px" }}>
+                  <CustomCardMedia images={[item.image]} title={item.name} />
+                </div>
+                <CardContent>
+                  <Typography
+                    color={theme.palette.common.white}
+                    variant="h5"
+                    component="h2"
+                    textAlign="center"
+                  >
+                    {item.name}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
