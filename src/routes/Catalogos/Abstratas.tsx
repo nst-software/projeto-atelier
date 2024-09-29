@@ -10,6 +10,7 @@ import {
 import CustomCardMedia from "../../components/Catalogo/CustomCardMedia";
 import abstrata1 from "../../assets/IMG.jpg";
 import { theme } from "../../Style/Theme";
+import CatalogoCompleto from "../../components/Catalogo/CatalogoCompleto";
 
 const abstratas = [
   {
@@ -32,6 +33,7 @@ const abstratas = [
 const Abstratas: FC = () => {
   return (
     <Container>
+      <CatalogoCompleto />
       <div
         style={{
           marginBottom: "30px",

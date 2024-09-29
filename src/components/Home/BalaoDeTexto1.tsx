@@ -63,12 +63,10 @@ const BalaoDeTexto1 = () => {
         <p className={classes.text1}>Nova coleção</p>
       </div>
       <div className={classes.divText2}>
-        <p className={classes.text2}>Lorem ipsum</p>
+        <p className={classes.text2}>Verão Selvagem</p>
       </div>
       <div className={classes.divText3}>
-        <p className={classes.text3}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </p>
+        <p className={classes.text3}>Entre em contato para mais informações</p>
       </div>
     </div>
   );

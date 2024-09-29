@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
     overflow: "hidden",
     flexDirection: "column",
   },
+
   text1: {
     fontSize: "1.6rem",
     fontWeight: 400,
@@ -42,6 +43,7 @@ const Instagram: FC = () => {
       <div
         className="elfsight-app-fa3cce2c-0b62-4540-8006-243f19d63006"
         data-elfsight-app-lazy
+        style={{ maxWidth: "1700px" }}
       ></div>
     </div>
   );

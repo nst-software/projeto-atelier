@@ -37,8 +37,8 @@ const BalaoDeTexto1 = () => {
     <div className={classes.containerPrincipal}>
       <div className={classes.divText1}>
         <p className={classes.text1}>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
-          placeat magni magnam accusantium minima distinctio culpa.
+          Refletindo elegância, qualidade e estilo, nos dedicamos a oferecer
+          tecidos e estampas que inspiram confiança e beleza em cada peça.
         </p>
       </div>
     </div>

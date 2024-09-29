@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
     [theme.breakpoints.down("sm")]: {
       width: "90%",
     },
+    maxWidth: "1200px",
   },
 }));
 

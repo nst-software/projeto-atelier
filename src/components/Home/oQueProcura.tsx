@@ -29,6 +29,8 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "10px",
+    height: "60px",
+    width: "160px",
     padding: "1rem",
     border: "1px solid black",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -36,7 +38,7 @@ const useStyles = makeStyles(() => ({
     "&:hover": {
       padding: "1.2rem",
       [theme.breakpoints.down("sm")]: {
-        width: "45%",
+        padding: "1.1rem",
       },
     },
   },
@@ -58,16 +60,16 @@ const OQueProcura: React.FC = () => {
       <h2 className={classes.text1}>O QUE PROCURA</h2>
       <div className={classes.divCards}>
         <div className={classes.card}>
-          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>
+          <h3 className={classes.textCard}>Entre em contato</h3>
         </div>
         <div className={classes.card}>
-          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>{" "}
+          <h3 className={classes.textCard}>Ver catálogo</h3>{" "}
         </div>
         <div className={classes.card}>
-          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>{" "}
+          <h3 className={classes.textCard}>Nossa loja</h3>{" "}
         </div>
         <div className={classes.card}>
-          <h3 className={classes.textCard}>Lorem ipsum dolor</h3>
+          <h3 className={classes.textCard}>O que fazemos</h3>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
     borderRadius: "25px",
     width: "95%",
     overflow: "hidden",
+    maxWidth: "1800px",
   },
   containerTexto: {
     display: "flex",
@@ -87,14 +88,11 @@ function QuemSomos() {
       <div className={classes.containerPrincipal}>
         <div className={classes.containerTexto}>
           <h2 className={classes.texto}>QUEM SOMOS</h2>
-          <p className={classes.texto2}>
-            Lorem ipsum dolor sit amet consectetur
-          </p>
+          <p className={classes.texto2}>ATELIER TECIDOS E ESTAMPARIA</p>
           <p className={classes.texto3}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero odit
-            dignissimos obcaecati quas earum magni nesciunt voluptatum,
-            necessitatibus quam, a sed, distinctio illo praesentium harum
-            voluptas quo veritatis enim rem.
+            Nosso propósito é oferecer tecidos que unem qualidade e design,
+            ajudando nossos clientes a criar peças que expressem sua
+            personalidade com estilo e sofisticação.
           </p>
         </div>
         <div className={classes.containerVideo}>

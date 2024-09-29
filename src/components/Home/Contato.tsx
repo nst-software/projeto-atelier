@@ -26,6 +26,7 @@ const useStyles = makeStyles(() => ({
       width: "100%",
       borderRadius: "0",
     },
+    maxWidth: "1800px",
   },
   divContato: {
     display: "flex",
@@ -44,6 +45,7 @@ const useStyles = makeStyles(() => ({
     left: "0",
     alignItems: "center",
     width: "70%",
+    maxWidth: "70%",
     [theme.breakpoints.down("sm")]: {
       width: "95%",
     },
@@ -80,6 +82,9 @@ const useStyles = makeStyles(() => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "2rem",
     },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "3.5rem",
+    },
   },
   divImagem: {
     display: "flex",
@@ -112,8 +117,12 @@ const useStyles = makeStyles(() => ({
     fontWeight: "bold",
     fontSize: "2vw",
     textAlign: "center",
+    maxFontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.2rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "2.3rem",
     },
   },
   buttonInstagram: {

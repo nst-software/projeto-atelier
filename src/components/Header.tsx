@@ -19,8 +19,12 @@ import logo from "../assets/LogoEscrita.svg";
 
 const useStyles = makeStyles(() => ({
   headerLogo: {
-    height: "110px",
+    marginTop: "20px",
+    height: "180px",
     cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      height: "150px",
+    },
   },
 
   headerAppBar: {
