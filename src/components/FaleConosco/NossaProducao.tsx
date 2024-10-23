@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
-import MapComponent from "./MapaLoja";
+import MapProducao from "./MapaProducao";
 
 const useStyles = makeStyles(() => ({
   divPrincipal: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles(() => ({
       alignItems: "flex-start",
     },
   },
-  mapaLoja: {
+  mapaProducao: {
     width: "50%",
 
     marginLeft: "5%",
@@ -63,26 +63,27 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const NossaLoja: React.FC = () => {
+const NossaProducao: React.FC = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.divPrincipal}>
-      <h2 className={classes.titulo}>Nossa Loja</h2>
+      <h2 className={classes.titulo}>Nossa Producao</h2>
       <div className={classes.separator}></div>
       <div className={classes.container}>
         <div className={classes.divTexto}>
-          <p className={classes.texto}>(62)3294-0595/ (62) 98482-0366</p>
+          <p className={classes.texto}>(62)3642-8432</p>
           <p className={classes.texto}>
-            Avenida São Paulo, 298, Setor Campinas, Goiânia - GO, Cep: 74510-030
+            Rua 11 de Janeiro, Qd 02, Lt 01 e 02, Vila Aurora Oeste, Goiânia -
+            GO, Cep: 74425-100
           </p>
         </div>
-        <div className={classes.mapaLoja}>
-          <MapComponent />
+        <div className={classes.mapaProducao}>
+          <MapProducao />
         </div>
       </div>
     </div>
   );
 };
 
-export default NossaLoja;
+export default NossaProducao;

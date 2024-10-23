@@ -1,5 +1,6 @@
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
@@ -54,21 +55,27 @@ const useStyles = makeStyles(() => ({
 
 const OQueProcura: React.FC = () => {
   const classes = useStyles();
+  const navigateToWhatsApp = () => {
+    // Substitua o número de telefone pelo número desejado, com o código do país (sem sinais como +, -, etc.)
+    const phoneNumber = "5562999999999"; // Exemplo para um número do Brasil (55 é o código do país)
+    window.open(`https://wa.me/${phoneNumber}`, "_blank"); // Abre o WhatsApp em uma nova aba
+  };
+  const navigate = useNavigate();
 
   return (
     <div className={classes.containerPrincipal}>
       <h2 className={classes.text1}>O QUE PROCURA</h2>
       <div className={classes.divCards}>
-        <div className={classes.card}>
+        <div className={classes.card} onClick={navigateToWhatsApp}>
           <h3 className={classes.textCard}>Entre em contato</h3>
         </div>
-        <div className={classes.card}>
-          <h3 className={classes.textCard}>Ver catálogo</h3>{" "}
+        <div className={classes.card} onClick={() => navigate("/catalogo")}>
+          <h3 className={classes.textCard}>Ver catálogo</h3>
         </div>
-        <div className={classes.card}>
-          <h3 className={classes.textCard}>Nossa loja</h3>{" "}
+        <div className={classes.card} onClick={() => navigate("/fale-conosco")}>
+          <h3 className={classes.textCard}>Nossa loja</h3>
         </div>
-        <div className={classes.card}>
+        <div className={classes.card} onClick={() => navigate("/quemSomos")}>
           <h3 className={classes.textCard}>O que fazemos</h3>
         </div>
       </div>

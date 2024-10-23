@@ -63,6 +63,14 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const Footer = () => {
+  const navigateToWhatsApp = () => {
+    // Substitua o número de telefone pelo número desejado, com o código do país (sem sinais como +, -, etc.)
+    const phoneNumber = "5562999999999"; // Exemplo para um número do Brasil (55 é o código do país)
+    window.open(`https://wa.me/${phoneNumber}`, "_blank"); // Abre o WhatsApp em uma nova aba
+  };
+  const goToInstagram = () => {
+    window.open("https://www.instagram.com/atelier.tecidosoficial/", "_blank");
+  };
   const navigate = useNavigate();
   const classes = useStyles();
   return (
@@ -91,15 +99,15 @@ export const Footer = () => {
         </div>
         <div className={classes.divInfo}>
           <p style={{ lineHeight: "1.8" }}>
-            Endereço: Rua das Flores, 123
+            Rua 11 de Janeiro, Qd 02, Lt 01 e 02, Vila Aurora Oeste, Goiânia
             <br />
-            CEP: 99999-999
+            CEP: 74425-100
             <br />
-            Telefone:(99)99999-9999
+            Telefone:(62)3642-8432
             <br />
             E-mail:email@trademail.com <br />
-            <InstagramIcon />
-            <WhatsApp />
+            <InstagramIcon onClick={goToInstagram} />
+            <WhatsApp onClick={navigateToWhatsApp} />
           </p>
         </div>
       </footer>

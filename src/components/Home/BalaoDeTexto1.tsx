@@ -1,5 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
+import { Height } from "@mui/icons-material";
+import { height } from "@mui/system";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
@@ -8,6 +10,11 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: theme.palette.secondary.main,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+
+      justifyContent: "center",
+    },
   },
   divText1: {
     width: "25%",
@@ -16,13 +23,15 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     marginLeft: "5%",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      marginLeft: "0%",
+      marginTop: "1rem",
+    },
   },
   text1: {
     color: theme.palette.secondary.contrastText,
     fontSize: "1.5rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "1rem",
-    },
   },
   divText2: {
     width: "30%",
@@ -34,9 +43,6 @@ const useStyles = makeStyles(() => ({
   text2: {
     color: theme.palette.secondary.contrastText,
     fontSize: "2.5rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "2rem",
-    },
   },
   divText3: {
     width: "25%",
@@ -45,11 +51,16 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     marginRight: "5%",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "70%",
+      marginRight: "0%",
+      marginBottom: "1rem",
+    },
   },
   text3: {
     color: theme.palette.secondary.contrastText,
     [theme.breakpoints.down("sm")]: {
-      fontSize: "0.7rem",
+      fontSize: "1.2rem",
     },
   },
 }));

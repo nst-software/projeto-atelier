@@ -75,23 +75,23 @@ const ImagemTexto = () => {
         <div className={classes.divTexto}>
           <h1 className={classes.titulo}>Atelier Tecidos</h1>
           <p className={classes.texto}>
-            Na Atelier Tecidos, somos apaixonados por criar soluções inovadoras
-            e personalizadas que atendam às necessidades dos nossos clientes.
-            Com uma equipe altamente qualificada e comprometida, atuamos no
-            mercado com foco em desenvolver produtos e serviços de alta
-            qualidade, sempre visando superar expectativas.
+            Fundada em 2005, na cidade de Goiânia-GO, o Atelier Estamparia
+            Digital é fruto do sonho de sua proprietária Cléia Souza.
           </p>
           <p className={classes.texto}>
-            Nosso diferencial está na capacidade de combinar expertise técnica
-            com um atendimento próximo e humanizado. Valorizamos a transparência
-            e o trabalho colaborativo, e acreditamos que cada desafio é uma
-            oportunidade para aprender e crescer.
+            Realizando trabalhos com estampas manuais exclusivas, rapidamente a
+            empresa passou a atuar nos mercados do Centro-Oeste, Nordeste e
+            Sudeste.
           </p>
           <p className={classes.texto}>
-            Ao longo dos anos, construímos uma sólida reputação baseada na
-            confiança e no sucesso dos projetos que realizamos. Com um olhar
-            atento para as tendências tecnológicas e de mercado, buscamos sempre
-            estar à frente, oferecendo soluções que fazem a diferença.
+            Com a evolução do processo manual para o digital, a empresa
+            modernizou, contando hoje com um moderno e amplo parque industrial
+            em sua sede própria.
+          </p>
+          <p className={classes.texto}>
+            Chegamos a uma produção de mais de 120.000 metros por mês, sem
+            abandonar a qualidade, a padronização, o desenvolvimento de estampas
+            exclusivas e o compromisso com a pontualidade na entrega.
           </p>
         </div>
         <div className={classes.divImagem}>

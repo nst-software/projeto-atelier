@@ -170,6 +170,14 @@ const useStyles = makeStyles(() => ({
 
 const Contato: React.FC = () => {
   const classes = useStyles();
+  const navigateToWhatsApp = () => {
+    // Substitua o número de telefone pelo número desejado, com o código do país (sem sinais como +, -, etc.)
+    const phoneNumber = "5562999999999"; // Exemplo para um número do Brasil (55 é o código do país)
+    window.open(`https://wa.me/${phoneNumber}`, "_blank"); // Abre o WhatsApp em uma nova aba
+  };
+  const goToInstagram = () => {
+    window.open("https://www.instagram.com/atelier.tecidosoficial/", "_blank");
+  };
 
   return (
     <div className={classes.divPrincipal}>
@@ -179,7 +187,10 @@ const Contato: React.FC = () => {
             <h2 className={classes.textPrincipal}>
               ENTRE EM CONTATO COM NOSSOS REPRESENTANTES
             </h2>
-            <button className={classes.buttonContato}>
+            <button
+              className={classes.buttonContato}
+              onClick={navigateToWhatsApp}
+            >
               <CallIcon style={{ paddingRight: "0.5rem", width: "20%" }} />
               Contato
             </button>
@@ -191,7 +202,7 @@ const Contato: React.FC = () => {
           <img src={floral3} className={classes.floral3} />
           <div className={classes.card}>
             <h3 className={classes.textCard}>Acesse o Instagram!</h3>
-            <button className={classes.buttonInstagram}>
+            <button className={classes.buttonInstagram} onClick={goToInstagram}>
               <Instagram style={{ paddingRight: "0.5rem", width: "20%" }} />
               Instagram
             </button>
