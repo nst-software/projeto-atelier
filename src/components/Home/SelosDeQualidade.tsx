@@ -42,8 +42,9 @@ const useStyles = makeStyles(() => ({
 
 const SelosDeQualidade = () => {
   const classes = useStyles();
+  return null;
 
-  return (
+  /*   return (
     <div className={classes.containerPrincipal}>
       <h2 className={classes.text1}>CERTIFICADOS</h2>
       <div className={classes.divCards}>
@@ -52,7 +53,7 @@ const SelosDeQualidade = () => {
         <div className={classes.card}> </div>
       </div>
     </div>
-  );
+  ); */
 };
 
 export default SelosDeQualidade;
