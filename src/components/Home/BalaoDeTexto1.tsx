@@ -1,7 +1,5 @@
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
-import { Height } from "@mui/icons-material";
-import { height } from "@mui/system";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
