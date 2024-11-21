@@ -1,7 +1,5 @@
 import Card from "@mui/material/Card";
 import CustomCardMedia from "./CustomCardMedia";
-import { useNavigate } from "react-router-dom";
-import image1 from "../../assets/IMG.jpg";
 
 import {
   CardActionArea,
@@ -167,8 +165,6 @@ const catalogos = [
 ];
 
 const Cards: React.FC = () => {
-  const navigate = useNavigate();
-
   return (
     <Container>
       <Grid
