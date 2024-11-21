@@ -37,7 +37,15 @@ const CatalogoCompleto: React.FC = () => {
   return (
     <div className={classes.divPrincipal}>
       <div className={classes.divButton}>
-        <button className={classes.button}>ACESSE CATÁLOGO COMPLETO</button>
+        <button
+          onClick={() => {
+            const phoneNumber = "5562984420366";
+            window.open(`https://wa.me/${phoneNumber}`, "_blank");
+          }}
+          className={classes.button}
+        >
+          ACESSE CATÁLOGO COMPLETO
+        </button>
       </div>
     </div>
   );

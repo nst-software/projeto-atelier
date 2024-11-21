@@ -56,8 +56,7 @@ const useStyles = makeStyles(() => ({
 const OQueProcura: React.FC = () => {
   const classes = useStyles();
   const navigateToWhatsApp = () => {
-    // Substitua o número de telefone pelo número desejado, com o código do país (sem sinais como +, -, etc.)
-    const phoneNumber = "5562999999999"; // Exemplo para um número do Brasil (55 é o código do país)
+    const phoneNumber = "5562984420366"; // Exemplo para um número do Brasil (55 é o código do país)
     window.open(`https://wa.me/${phoneNumber}`, "_blank"); // Abre o WhatsApp em uma nova aba
   };
   const navigate = useNavigate();

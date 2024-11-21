@@ -2,9 +2,7 @@ import Card from "@mui/material/Card";
 import CustomCardMedia from "./CustomCardMedia";
 import { useNavigate } from "react-router-dom";
 import image1 from "../../assets/IMG.jpg";
-import logo from "../../assets/ATELIER-LOGO.png";
-import placeholder1 from "../../assets/placeholder_image1.png";
-import placeholder2 from "../../assets/placeholder_image2.png";
+
 import {
   CardActionArea,
   CardContent,
@@ -14,119 +12,156 @@ import {
 } from "@mui/material";
 import { theme } from "../../Style/Theme";
 
+const animalPrintUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/animal_print/a10053_onca_aquarela.jpg";
+const barradosUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/barrados/b_178_x_gemotrico_com_flores_mais_cheio.jpg";
+const boladosPoaUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/bolados_poa/a1086_z_bolado_2cm_preto_nude.jpg";
+const etnicasUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/etnicas/a654_penas_etnicas..jpg";
+const figurativosRomanticosUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/figurativos_romanticos/a033_x_passarinho_com_fundo_azul.jpg";
+const floraisClassicosUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/florais_classicos/a10031z_floral_com_fundo_pink.jpg";
+const floraisRomanticosUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/florais_romanticos/a8628_floral_rosa_fd_rosa_claro..jpg";
+const folhagensUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/folhagens/a9475_v_folhagem_verde..png";
+const geometricosUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/geometricos/a2901_x_geometrico_azul_e_preto_e_bege_menor.jpg";
+const infantilBebesUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/infantil_bebes/ib001_elefante_carrinho_aamrelo_florzinhas_fundo_azul.jpg";
+/* const infantilFemininoUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/infantil_masculino/inf_1055_futebol.jpg"; */
+const infantilMasculinoUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/infantil_masculino/inf_1055_futebol.jpg";
+const libertyUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/liberty/a2620x_coqueiro_folhagem_menor.jpg";
+const listradasUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/listradas/a1481_listrado_5_milimetros..png";
+const masculinasUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/masculinas/ab7853_coqueiros_marrom_e_bege.jpg";
+const pareosUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/pareos/p_269_x.jpg";
+const tropicalUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/tropical/a1582_estampa_tropical_com_folhas_e_passarinhos.jpg";
+const xadrezUri =
+  "https://storage.googleapis.com/tecidosatelier_estampas/xadrez/a10077_quadriculado_colorido_xadrez.jpg";
+
 const catalogos = [
-  {
+  /* {
     id: 1,
     name: "Abstratas",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [abstratasUri],
     rota: "/catalogo/abstratas",
-  },
+  }, */
   {
     id: 2,
     name: "Animal Print",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [animalPrintUri],
     rota: "/catalogo/animal-print",
   },
   {
     id: 3,
     name: "Barrados",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [barradosUri],
     rota: "/catalogo/barrados",
   },
   {
     id: 4,
     name: "Bolados-Poa",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [boladosPoaUri],
     rota: "/catalogo/bolados-poa",
   },
   {
     id: 5,
     name: "Étnicas",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [etnicasUri],
     rota: "/catalogo/etnicas",
   },
   {
     id: 6,
     name: "Figurativos Românticos",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [figurativosRomanticosUri],
     rota: "/catalogo/figurativos-romanticos",
   },
   {
     id: 7,
     name: "Florais Clássicos",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [floraisClassicosUri],
     rota: "/catalogo/florais-classicos",
   },
   {
     id: 8,
     name: "Florais Românticos",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [floraisRomanticosUri],
     rota: "/catalogo/florais-romanticos",
   },
   {
     id: 9,
     name: "Folhagens",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [folhagensUri],
     rota: "/catalogo/folhagens",
   },
   {
     id: 10,
     name: "Geométricos",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [geometricosUri],
     rota: "/catalogo/geometricos",
   },
   {
     id: 11,
     name: "Infantil Bebês",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [infantilBebesUri],
     rota: "/catalogo/infantil-bebes",
   },
-  {
+  /*   {
     id: 12,
     name: "Infantil Feminino",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [infantilFemininoUri],
     rota: "/catalogo/infantil-feminino",
-  },
+  }, */
   {
     id: 13,
     name: "Infantil Masculino",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [infantilMasculinoUri],
     rota: "/catalogo/infantil-masculino",
   },
   {
     id: 14,
     name: "Liberty",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [libertyUri],
     rota: "/catalogo/liberty",
   },
   {
     id: 15,
     name: "Listradas",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [listradasUri],
     rota: "/catalogo/listradas",
   },
   {
     id: 16,
     name: "Masculinas",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [masculinasUri],
     rota: "/catalogo/masculinas",
   },
   {
     id: 17,
     name: "Pareôs",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [pareosUri],
     rota: "/catalogo/pareos",
   },
   {
     id: 18,
     name: "Tropical",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [tropicalUri],
     rota: "/catalogo/tropical",
   },
   {
     id: 19,
     name: "Xadrez",
-    images: [image1, logo, placeholder1, placeholder2],
+    images: [xadrezUri],
     rota: "/catalogo/xadrez",
   },
 ];
@@ -158,7 +193,7 @@ const Cards: React.FC = () => {
                 },
               }}
             >
-              <CardActionArea onClick={() => navigate(item.rota)}>
+              <CardActionArea>
                 <div style={{ width: "100%", height: "300px" }}>
                   <CustomCardMedia images={item.images} title={item.name} />
                 </div>

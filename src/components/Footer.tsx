@@ -46,10 +46,12 @@ const useStyles = makeStyles(() => ({
   divInfo: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     width: "30%",
-    gap: "-10rem",
+    lineHeight: "1.6",
     [theme.breakpoints.down("sm")]: {
-      width: "50%",
+      width: "100%",
+      marginTop: "20px",
     },
   },
   logo: {
@@ -64,9 +66,8 @@ const useStyles = makeStyles(() => ({
 
 export const Footer = () => {
   const navigateToWhatsApp = () => {
-    // Substitua o número de telefone pelo número desejado, com o código do país (sem sinais como +, -, etc.)
-    const phoneNumber = "5562999999999"; // Exemplo para um número do Brasil (55 é o código do país)
-    window.open(`https://wa.me/${phoneNumber}`, "_blank"); // Abre o WhatsApp em uma nova aba
+    const phoneNumber = "5562984420366";
+    window.open(`https://wa.me/${phoneNumber}`, "_blank");
   };
   const goToInstagram = () => {
     window.open("https://www.instagram.com/atelier.tecidosoficial/", "_blank");
@@ -103,11 +104,17 @@ export const Footer = () => {
             <br />
             CEP: 74425-100
             <br />
-            Telefone:(62)3642-8432
+            Telefone: (62) 3294-0595
             <br />
-            E-mail:email@trademail.com <br />
-            <InstagramIcon onClick={goToInstagram} />
-            <WhatsApp onClick={navigateToWhatsApp} />
+            E-mail: tecidosatelier@gmail.com <br />
+            <InstagramIcon
+              style={{ cursor: "pointer" }}
+              onClick={goToInstagram}
+            />
+            <WhatsApp
+              style={{ cursor: "pointer" }}
+              onClick={navigateToWhatsApp}
+            />
           </p>
         </div>
       </footer>

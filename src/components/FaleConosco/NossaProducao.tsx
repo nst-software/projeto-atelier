@@ -72,7 +72,7 @@ const NossaProducao: React.FC = () => {
       <div className={classes.separator}></div>
       <div className={classes.container}>
         <div className={classes.divTexto}>
-          <p className={classes.texto}>(62)3642-8432</p>
+          <p className={classes.texto}>(62) 3294-0595</p>
           <p className={classes.texto}>
             Rua 11 de Janeiro, Qd 02, Lt 01 e 02, Vila Aurora Oeste, Goiânia -
             GO, Cep: 74425-100

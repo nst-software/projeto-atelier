@@ -56,8 +56,8 @@ const Contato: React.FC = () => {
   return (
     <div className={classes.divPrincipal}>
       <h1 className={classes.titulo}>Contato</h1>
-      <p className={classes.texto}>E-mail:email@trademail.com</p>
-      <p className={classes.texto}>Telefone: (11) 99999-9999</p>
+      <p className={classes.texto}>E-mail: tecidosatelier@gmail.com</p>
+      <p className={classes.texto}>Telefone: (62) 98442-0366</p>
       <button className={classes.buttonContato}>
         <CallIcon style={{ paddingRight: "0.5rem", width: "20%" }} />
         Contato
