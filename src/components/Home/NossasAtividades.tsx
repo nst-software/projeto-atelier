@@ -98,30 +98,6 @@ const NossasAtividades: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className={classes.card}>
-          <div className={classes.divImg}>
-            <img src={logoRedonda} className={classes.logo} />
-          </div>
-          <div className={classes.divText}>
-            <p className={classes.text}>
-              Somos uma estamparia especializada em criar estampas
-              personalizadas com técnicas como serigrafia e sublimação,
-              garantindo qualidade e durabilidade em diversos tipos de tecidos.
-            </p>
-          </div>
-        </div>
-        <div className={classes.card}>
-          <div className={classes.divImg}>
-            <img src={logoRedonda} className={classes.logo} />
-          </div>
-          <div className={classes.divText}>
-            <p className={classes.text}>
-              Somos uma estamparia especializada em criar estampas
-              personalizadas com técnicas como serigrafia e sublimação,
-              garantindo qualidade e durabilidade em diversos tipos de tecidos.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );
