@@ -11,23 +11,20 @@ import FaleConosco from "./routes/FaleConosco.tsx";
 import QuemSomos from "./routes/QuemSomos copy.tsx";
 import Abstratas from "./routes/Catalogos/Abstratas.tsx";
 
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: <App />,
-      children: [
-        { path: "", element: <Home /> },
-        { path: "catalogo", element: <Catalogo /> },
-        { path: "catalogo/abstratas", element: <Abstratas /> },
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { path: "", element: <Home /> },
+      { path: "catalogo", element: <Catalogo /> },
+      { path: "catalogo/abstratas", element: <Abstratas /> },
 
-        { path: "fale-conosco", element: <FaleConosco /> },
-        { path: "quemSomos", element: <QuemSomos /> },
-      ],
-    },
-  ],
-  { basename: "/projeto-atelier" },
-);
+      { path: "fale-conosco", element: <FaleConosco /> },
+      { path: "quemSomos", element: <QuemSomos /> },
+    ],
+  },
+]);
 
 const container = document.getElementById("root");
 if (container) {
