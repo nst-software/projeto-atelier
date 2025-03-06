@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
-import video from "../../assets/vecteezy-assortment-of-fabrics-in-textile-store-many-colorful-and-23222036-1_GmPaDAdH.mp4";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const useStyles = makeStyles(() => ({
   containerPrincipal: {
@@ -42,6 +42,7 @@ const useStyles = makeStyles(() => ({
   },
   containerVideo: {
     display: "flex",
+
     justifyContent: "center",
     alignItems: "center",
   },
@@ -77,6 +78,20 @@ const useStyles = makeStyles(() => ({
 function QuemSomos() {
   const classes = useStyles();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const script1 = document.createElement("script");
+    script1.src = "https://fast.wistia.com/player.js";
+    script1.async = true;
+    document.body.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.src = "https://fast.wistia.com/embed/k82pzy208k.js";
+    script2.async = true;
+    script2.type = "module";
+    document.body.appendChild(script2);
+  }, []);
+
   return (
     <div
       style={{
@@ -96,13 +111,14 @@ function QuemSomos() {
           </p>
         </div>
         <div className={classes.containerVideo}>
-          <video
+          <div
             className={classes.video}
-            src={video}
-            title="Video Quem Somos nós"
-            autoPlay
-            muted
-            loop
+            dangerouslySetInnerHTML={{
+              __html: `
+          <script src="https://fast.wistia.com/embed/k82pzy208k.js" async type="module"></script>
+          <wistia-player media-id="k82pzy208k" aspect="1.7843866171003717"></wistia-player>
+        `,
+            }}
           />
         </div>
         <div className={classes.divButton}>

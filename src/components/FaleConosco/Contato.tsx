@@ -1,6 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
 import CallIcon from "@mui/icons-material/Call";
+import { Sick } from "@mui/icons-material";
 
 const useStyles = makeStyles(() => ({
   divPrincipal: {
@@ -38,8 +39,11 @@ const useStyles = makeStyles(() => ({
     width: "9rem",
     marginLeft: "15%",
     marginTop: "1rem",
+
+    border: "none",
     "&:hover": {
       fontSize: "1.3vw",
+      padding: "0.6rem",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.2rem",
