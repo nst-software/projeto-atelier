@@ -68,7 +68,7 @@ const NossaProducao: React.FC = () => {
 
   return (
     <div className={classes.divPrincipal}>
-      <h2 className={classes.titulo}>Nossa Producao</h2>
+      <h2 className={classes.titulo}>Nossa Produção</h2>
       <div className={classes.separator}></div>
       <div className={classes.container}>
         <div className={classes.divTexto}>
