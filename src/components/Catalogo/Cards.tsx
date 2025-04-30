@@ -10,50 +10,52 @@ import {
 } from "@mui/material";
 import { theme } from "../../Style/Theme";
 
+const abstratasUri =
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_abstrato.jpg";
 const animalPrintUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/animal_print/a10053_onca_aquarela.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_animal_print.jpg";
 const barradosUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/barrados/b_178_x_gemotrico_com_flores_mais_cheio.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_barrado.jpg";
 const boladosPoaUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/bolados_poa/a1086_z_bolado_2cm_preto_nude.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_bolado_poa.jpg";
 const etnicasUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/etnicas/a654_penas_etnicas..jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_etnica.jpg";
 const figurativosRomanticosUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/figurativos_romanticos/a033_x_passarinho_com_fundo_azul.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_figurativo_romantico.jpg";
 const floraisClassicosUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/florais_classicos/a10031z_floral_com_fundo_pink.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_floral_classicos.jpg";
 const floraisRomanticosUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/florais_romanticos/a8628_floral_rosa_fd_rosa_claro..jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_floral_romantico.jpg";
 const folhagensUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/folhagens/a9475_v_folhagem_verde..png";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_folhagem.jpg";
 const geometricosUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/geometricos/a2901_x_geometrico_azul_e_preto_e_bege_menor.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_geometricas.jpg";
 const infantilBebesUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/infantil_bebes/ib001_elefante_carrinho_aamrelo_florzinhas_fundo_azul.jpg";
-/* const infantilFemininoUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/infantil_masculino/inf_1055_futebol.jpg"; */
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_infantil_bebe.jpg";
+const infantilFemininoUri =
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_infantil_femininas.jpg";
 const infantilMasculinoUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/infantil_masculino/inf_1055_futebol.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_infantil_masculina.jpg";
 const libertyUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/liberty/a2620x_coqueiro_folhagem_menor.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_liberty.jpg";
 const listradasUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/listradas/a1481_listrado_5_milimetros..png";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_listrado.jpg";
 const masculinasUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/masculinas/ab7853_coqueiros_marrom_e_bege.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_masculinas.jpg";
 const pareosUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/pareos/p_269_x.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_pareo_e_cangas.jpg";
 const tropicalUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/tropical/a1582_estampa_tropical_com_folhas_e_passarinhos.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_tropicais.jpg";
 const xadrezUri =
-  "https://storage.googleapis.com/tecidosatelier_estampas/xadrez/a10077_quadriculado_colorido_xadrez.jpg";
+  "https://storage.googleapis.com/tecidosatelier_public/capas/capa_xadrez.jpg";
 
 const catalogos = [
-  /* {
+  {
     id: 1,
     name: "Abstratas",
     images: [abstratasUri],
     rota: "/catalogo/abstratas",
-  }, */
+  },
   {
     id: 2,
     name: "Animal Print",
@@ -114,12 +116,12 @@ const catalogos = [
     images: [infantilBebesUri],
     rota: "/catalogo/infantil-bebes",
   },
-  /*   {
+  {
     id: 12,
     name: "Infantil Feminino",
     images: [infantilFemininoUri],
     rota: "/catalogo/infantil-feminino",
-  }, */
+  },
   {
     id: 13,
     name: "Infantil Masculino",
@@ -146,13 +148,13 @@ const catalogos = [
   },
   {
     id: 17,
-    name: "Pareôs",
+    name: "Pareôs e Cangas",
     images: [pareosUri],
     rota: "/catalogo/pareos",
   },
   {
     id: 18,
-    name: "Tropical",
+    name: "Tropicais",
     images: [tropicalUri],
     rota: "/catalogo/tropical",
   },
@@ -190,7 +192,7 @@ const Cards: React.FC = () => {
               }}
             >
               <CardActionArea>
-                <div style={{ width: "100%", height: "300px" }}>
+                <div style={{ width: "100%", height: "370px" }}>
                   <CustomCardMedia images={item.images} title={item.name} />
                 </div>
                 <CardContent>

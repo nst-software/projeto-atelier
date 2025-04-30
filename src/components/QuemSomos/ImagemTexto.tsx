@@ -1,6 +1,6 @@
 import { makeStyles } from "@mui/styles";
 import { theme } from "../../Style/Theme";
-import imagem from "../../assets/IMG.jpg";
+import imagem from "../../assets/QuemSomos.jpeg";
 
 const useStyles = makeStyles(() => ({
   divInicial: {

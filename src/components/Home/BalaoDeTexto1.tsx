@@ -40,7 +40,7 @@ const useStyles = makeStyles(() => ({
   },
   text2: {
     color: theme.palette.secondary.contrastText,
-    fontSize: "2.5rem",
+    fontSize: "1.5rem",
   },
   divText3: {
     width: "25%",
@@ -72,7 +72,7 @@ const BalaoDeTexto1 = () => {
         <p className={classes.text1}>Nova coleção</p>
       </div>
       <div className={classes.divText2}>
-        <p className={classes.text2}>Verão Selvagem</p>
+        <p className={classes.text2}>Novas Peças em Catálogo</p>
       </div>
       <div className={classes.divText3}>
         <p className={classes.text3}>Entre em contato para mais informações</p>

@@ -61,8 +61,14 @@ const Contato: React.FC = () => {
     <div className={classes.divPrincipal}>
       <h1 className={classes.titulo}>Contato</h1>
       <p className={classes.texto}>E-mail: tecidosatelier@gmail.com</p>
-      <p className={classes.texto}>Telefone: (62) 98442-0366</p>
-      <button className={classes.buttonContato}>
+      <p className={classes.texto}>Telefone: (62) 3294-0595</p>
+      <button
+        className={classes.buttonContato}
+        onClick={() => {
+          const phoneNumber = "5562984420366";
+          window.open(`https://wa.me/${phoneNumber}`, "_blank");
+        }}
+      >
         <CallIcon style={{ paddingRight: "0.5rem", width: "20%" }} />
         Contato
       </button>

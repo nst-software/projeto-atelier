@@ -17,7 +17,7 @@ const CustomCardMedia: FC<CustomCardMediaProps> = ({ images, title }) => {
       sx={{
         width: "100%",
         height: "100%",
-        objectFit: "contain",
+        objectFit: "cover",
         backgroundColor: "white",
       }}
     />

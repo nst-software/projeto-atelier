@@ -56,8 +56,8 @@ const useStyles = makeStyles(() => ({
 const OQueProcura: React.FC = () => {
   const classes = useStyles();
   const navigateToWhatsApp = () => {
-    const phoneNumber = "5562984420366"; // Exemplo para um número do Brasil (55 é o código do país)
-    window.open(`https://wa.me/${phoneNumber}`, "_blank"); // Abre o WhatsApp em uma nova aba
+    const phoneNumber = "5562984420366";
+    window.open(`https://wa.me/${phoneNumber}`, "_blank");
   };
   const navigate = useNavigate();
 

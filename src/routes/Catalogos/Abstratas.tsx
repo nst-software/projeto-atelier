@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import CustomCardMedia from "../../components/Catalogo/CustomCardMedia";
-import abstrata1 from "../../assets/IMG.jpg";
+
 import { theme } from "../../Style/Theme";
 import CatalogoCompleto from "../../components/Catalogo/CatalogoCompleto";
 

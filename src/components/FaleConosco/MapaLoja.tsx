@@ -1,9 +1,23 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { DivIcon } from "leaflet";
+import { renderToStaticMarkup } from "react-dom/server";
+import PlaceIcon from "@mui/icons-material/Place";
 import "leaflet/dist/leaflet.css";
 import { LatLngExpression } from "leaflet";
 import { Button } from "@mui/material";
 
 const MapComponent = () => {
+  const iconMarkup = renderToStaticMarkup(
+    <PlaceIcon style={{ fontSize: "40px", color: "#ac0a0b" }} />,
+  );
+  const customIcon = new DivIcon({
+    html: iconMarkup,
+    className: "",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40],
+  });
+
   const center: LatLngExpression = [-16.670700487404332, -49.29092395092388];
 
   const openMap = () => {
@@ -22,15 +36,15 @@ const MapComponent = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={center}>
+      <Marker position={center} icon={customIcon}>
         <Popup>
           <div>
             <Button
               sx={{
                 color: "white",
-                background: "blue",
+                background: "#ac0a0b",
                 "&:hover": {
-                  background: "darkblue",
+                  background: "darkred",
                 },
               }}
               onClick={openMap}

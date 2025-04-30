@@ -1,10 +1,24 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { DivIcon } from "leaflet";
+import { renderToStaticMarkup } from "react-dom/server";
+import PlaceIcon from "@mui/icons-material/Place";
 import "leaflet/dist/leaflet.css";
 import { LatLngExpression } from "leaflet";
 import { Button } from "@mui/material";
 
 const MapProducao = () => {
   const center: LatLngExpression = [-16.679694914737137, -49.306819273367566];
+
+  const iconMarkup = renderToStaticMarkup(
+    <PlaceIcon style={{ fontSize: "40px", color: "#ac0a0b" }} />,
+  );
+  const customIcon = new DivIcon({
+    html: iconMarkup,
+    className: "",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40],
+  });
   const openMap = () => {
     // Substitua a URL pelo link do local desejado no Google Maps
     const mapUrl =
@@ -21,15 +35,15 @@ const MapProducao = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={center}>
+      <Marker position={center} icon={customIcon}>
         <Popup>
           <div>
             <Button
               sx={{
                 color: "white",
-                background: "blue",
+                background: "#ac0a0b",
                 "&:hover": {
-                  background: "darkblue", // Cor ao passar o mouse
+                  background: "darkred", // Cor ao passar o mouse
                 },
               }}
               onClick={openMap}
