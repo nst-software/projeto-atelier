@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./Style/Theme.ts";
 import Home from "./routes/Home.tsx";
@@ -9,6 +9,7 @@ import "./index.css";
 import Catalogo from "./routes/Catalogo.tsx";
 import FaleConosco from "./routes/FaleConosco.tsx";
 import QuemSomos from "./routes/QuemSomos copy.tsx";
+import Estampas from "./routes/Estampas.tsx";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,20 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", element: <Home /> },
-      { path: "catalogo", element: <Catalogo /> },
+      {
+        path: "catalogo",
+        element: <Outlet />,
+        children: [
+          {
+            path: "",
+            element: <Catalogo />,
+          },
+          {
+            path: ":category_id",
+            element: <Estampas />,
+          },
+        ],
+      },
 
       { path: "fale-conosco", element: <FaleConosco /> },
       { path: "quemSomos", element: <QuemSomos /> },

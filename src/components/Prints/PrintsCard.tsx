@@ -1,6 +1,7 @@
+import React from "react";
+import { useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
-import CustomCardMedia from "./CustomCardMedia";
-import { useNavigate } from "react-router-dom";
+import CustomCardMedia from "../Catalogo/CustomCardMedia";
 import {
   CardActionArea,
   CardContent,
@@ -9,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { theme } from "../../Style/Theme";
-import Catalogo from "../../catalogoItens/catalogo.js";
+import Catalogo from "../../catalogoItens/catalogo";
 
 interface Print {
   id: number;
@@ -24,8 +25,20 @@ interface CatalogoItem {
   prints: Print[];
 }
 
-const Cards: React.FC = () => {
-  const navigate = useNavigate();
+const PrintsCards: React.FC = () => {
+  const { category_id } = useParams<{ category_id: string }>();
+
+  // Converta o category_id para number para comparação
+  const categoryIdNumber = Number(category_id);
+
+  const filteredCatalogo = Catalogo.find(
+    (item) => item.category_id === categoryIdNumber,
+  );
+
+  if (!filteredCatalogo) {
+    return <div>Categoria não encontrada</div>;
+  }
+
   return (
     <Container>
       <Grid
@@ -35,8 +48,8 @@ const Cards: React.FC = () => {
         alignItems="center"
         justifyContent="center"
       >
-        {Catalogo.map((item: CatalogoItem) => (
-          <Grid item xs={12} sm={6} md={4} key={item.category_id}>
+        {filteredCatalogo.prints.map((print: Print) => (
+          <Grid item xs={12} sm={6} md={4} key={print.id}>
             <Card
               sx={{
                 backgroundColor: theme.palette.secondary.main,
@@ -50,20 +63,11 @@ const Cards: React.FC = () => {
                 },
               }}
             >
-              <CardActionArea onClick={() => navigate(`${item.category_id}`)}>
-                <div style={{ width: "100%", height: "370px" }}>
-                  <CustomCardMedia images={item.capa} title={item.name} />
+              <CardActionArea>
+                <div style={{ width: "100%", height: "500px" }}>
+                  <CustomCardMedia images={print.image} title={print.image} />
                 </div>
-                <CardContent>
-                  <Typography
-                    color={theme.palette.common.white}
-                    variant="h6"
-                    component="h2"
-                    textAlign="center"
-                  >
-                    {item.name}
-                  </Typography>
-                </CardContent>
+                <CardContent></CardContent>
               </CardActionArea>
             </Card>
           </Grid>
@@ -73,4 +77,4 @@ const Cards: React.FC = () => {
   );
 };
 
-export default Cards;
+export default PrintsCards;
