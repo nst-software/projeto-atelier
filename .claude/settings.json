@@ -5,18 +5,18 @@
       "Bash(yarn build)",
       "Bash(yarn preview)",
       "Bash(yarn install)",
-      "Bash(npx tsc --noEmit*)",
-      "Bash(npx vite build*)",
       "Bash(git status*)",
       "Bash(git diff*)",
       "Bash(git log*)",
       "Bash(git show*)",
       "Bash(gh pr view*)",
-      "Bash(gh pr list*)"
+      "Bash(gh pr list*)",
+      "Bash(yarn test)",
+      "Bash(yarn run check)",
+      "Bash(yarn build:only)",
+      "Bash(yarn audit:dist)"
     ],
     "ask": [
-      "Bash(yarn deploy*)",
-      "Bash(npx gh-pages*)",
       "Bash(gh pr merge*)",
       "Bash(git push*main*)"
     ],
