@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { buildHead } from "../lib/seo";
+import { siteConfig } from "../config/site";
+import { buildHead, buildLocalBusinessJsonLd } from "../lib/seo";
 
 interface Props {
   title: string;
@@ -34,6 +35,7 @@ const head = buildHead({ title, description, path: Astro.url.pathname, image });
     <meta name="twitter:title" content={head.twitter.title} />
     <meta name="twitter:description" content={head.twitter.description} />
     <meta name="twitter:image" content={head.twitter.image} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(buildLocalBusinessJsonLd(siteConfig))} />
   </head>
   <body class="min-h-screen">
     <Header />
