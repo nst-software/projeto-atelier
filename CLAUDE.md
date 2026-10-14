@@ -6,20 +6,22 @@ Keep this file lean. Detailed conventions live in skills (progressive disclosure
 
 ## Commands (Node 22 via `.nvmrc`; yarn 1, vendored in `.yarn/releases`)
 - `yarn dev` | `yarn preview`
-- `yarn build` — THE gate: `astro check && vitest run && astro build`. Netlify runs exactly this, so a type error, failing test or invalid data cannot deploy
-- `yarn run check` (`astro check`) | `yarn test` (`vitest run`) | `yarn build:only` (`astro build`) — for local iteration. Plain `yarn check` is yarn 1's built-in lockfile check, not the script
+- `yarn build` — THE gate: `astro check && vitest run && astro build && yarn audit:dist`. Netlify runs exactly this, so a type error, failing test, invalid data or a broken page head cannot deploy
+- `yarn run check` (`astro check`) | `yarn test` (`vitest run`) | `yarn build:only` (`astro build`) | `yarn audit:dist` (audits an existing `dist`) — for local iteration. Plain `yarn check` is yarn 1's built-in lockfile check, not the script
 - No linter configured. Don't add ESLint unless asked
-- Hosted on **Netlify**; build config in `netlify.toml` (`yarn build`, publish `dist`, Node 22). `_redirects` is generated at build (never hand-edited); verify redirects with `netlify dev`, not `astro preview`
+- Hosted on **Netlify**; build config in `netlify.toml` (`yarn build`, publish `dist`, Node 22). `_redirects`, `robots.txt` and the sitemap are generated at build (never hand-edited); verify redirects with `netlify dev`, not `astro preview`
 
 ## Project Structure
 - `src/pages/` — routes (file-based). Pages compose sections and pass `title`/`description` to the layout, no logic
 - `src/layouts/BaseLayout.astro` — `<html lang="pt-BR">`, head from the SEO builder, Header, `#page` (main + Footer), global CSS
 - `src/components/` — `Header.astro`, `Footer.astro` (global) + one folder per page (`Home/`, …)
 - `src/config/site.ts` — every business fact (`siteConfig`); `src/config/routes.ts` — nav labels + paths
-- `src/lib/` — pure TS modules (SEO builder, catalog validator, redirects builder), each with a colocated `*.test.ts`
-- `src/integrations/` — Astro build integrations, thin wrappers over `src/lib/` (e.g. `redirects.ts` writes `dist/_redirects` from the catalog data)
+- `src/lib/` — pure TS modules (SEO builder, catalog validator, redirects and robots builders), each with a colocated `*.test.ts`
+- `src/integrations/` — Astro build integrations, thin wrappers over `src/lib/` (`static-files.ts` writes `dist/_redirects` from the catalog data and `dist/robots.txt` from `site`); `@astrojs/sitemap` emits `sitemap-index.xml`
 - `src/styles/global.css` — Tailwind import + `@theme` tokens (colors, font, breakpoints), body + scrollbar
 - `src/assets/` — local images, always rendered through `astro:assets`
+- `scripts/audit-head.mjs` — plain-Node audit of `dist` (one title/description/canonical/OG/Twitter per page, unique titles and descriptions, production origin, `lang`, sitemap covers every page, robots.txt); its pure functions are unit-tested by `src/lib/head-audit.test.ts`
+- `scripts/generate-og-image.mjs` — regenerates `public/og-default.png` (1200×630, logo on the brand beige) with `sharp`
 - `legacy/` — the old React/Vite app, **read-only** migration source for copy, data and assets. Excluded from tsconfig, `astro check` and Vitest; never import from it. Deleted at the end of the migration
 
 ## Core Rules (always apply)
@@ -45,6 +47,5 @@ User-invoked workflow:
 - Plans/PRDs live in `plans/<YYYY-MM-DD>/` and are committed
 
 ## Known debt (don't fix unless asked)
-- Open Graph default image `/og-default.png` is referenced by the SEO builder but not added yet
 - Owner still to confirm: production origin `https://ateliertecidos.com.br` and footer using the store address
 - `scripts/check-catalog-migration.mjs` is a one-time check of the catalog collection against `legacy/`; delete it together with `legacy/`

@@ -9,11 +9,11 @@ No "should work". Run the commands, paste the output, then declare done.
 
 ## Commands (Node 22)
 ```bash
-yarn build                        # astro check → vitest run → astro build, stops at the first failure
+yarn build                        # astro check → vitest run → astro build → audit:dist (head/sitemap/robots audit of dist), stops at the first failure
 find dist -type f -size +500k     # must print nothing
 grep -rnE "98442|3294|tecidosatelier@|instagram\.com|wa\.me|Av\. São Paulo|11 de Janeiro" src --exclude-dir=config   # must print nothing
 ```
-For a quicker loop: `yarn run check` (types), `yarn test` (unit tests), `yarn build:only`. The final evidence is always a full `yarn build`. There is no linter — say so, don't invent one.
+For a quicker loop: `yarn run check` (types), `yarn test` (unit tests), `yarn build:only`, `yarn audit:dist`. The final evidence is always a full `yarn build`. There is no linter — say so, don't invent one.
 
 **UI changed:** `yarn dev`, exercise the golden path + one edge case (phone width below `sm` 600px included; keyboard path for anything interactive, e.g. the header drawer: open, Tab cycle, Escape, focus back on the trigger). Report what you did and saw. "I can't test the UI" is valid; "it should work" is not. Don't open screenshots to check visuals — Victor does that.
 
@@ -33,6 +33,7 @@ Verification:
 - astro check  → 0 errors
 - vitest       → N passed
 - astro build  → Complete
+- audit:dist   → head audit passed
 - dist >500KB  → none
 - UI           → <what was exercised> | not tested (why)
 Status: ready to commit / ready for review

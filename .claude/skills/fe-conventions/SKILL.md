@@ -51,6 +51,6 @@ description: Atelier site conventions for src/ (Astro 7 static + Tailwind CSS v4
 
 ## Feedback loops before commit
 ```bash
-yarn build          # astro check → vitest run → astro build; must exit 0
+yarn build          # astro check → vitest run → astro build → audit:dist; must exit 0
 find dist -type f -size +500k   # must print nothing
 ```
