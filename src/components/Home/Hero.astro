@@ -1,0 +1,56 @@
+---
+import { Image, Picture } from "astro:assets";
+import logo from "../../assets/LogoEscrita.svg";
+import floral1 from "../../assets/ImagemFundo1/floralBuque01.png";
+import floral2 from "../../assets/ImagemFundo1/floralBuque02.png";
+import floral3 from "../../assets/ImagemFundo1/floralBuque03.png";
+import type { ImageOutputFormat } from "astro";
+import { siteConfig } from "../../config/site";
+
+const formats: ImageOutputFormat[] = ["avif", "webp"];
+const widths = [480, 800, 1200];
+---
+
+<section class="relative flex aspect-2/3 w-full items-center justify-center overflow-hidden bg-white sm:aspect-16/6">
+  <h1 class="sr-only">{siteConfig.name}</h1>
+  <Image
+    src={logo}
+    alt={siteConfig.name}
+    loading="eager"
+    fetchpriority="high"
+    class="z-10 h-auto w-4/5 max-w-full sm:w-auto sm:max-w-[40%]"
+  />
+  <Picture
+    src={floral1}
+    alt=""
+    formats={formats}
+    fallbackFormat="webp"
+    width={1200}
+    widths={widths}
+    sizes="(min-width: 600px) 60vw, 100vw"
+    loading="eager"
+    class="absolute top-[55%] -left-[20%] h-auto w-full sm:top-0 sm:w-[60%]"
+  />
+  <Picture
+    src={floral2}
+    alt=""
+    formats={formats}
+    fallbackFormat="webp"
+    width={1200}
+    widths={widths}
+    sizes="(min-width: 600px) 45vw, 70vw"
+    loading="eager"
+    class="absolute right-[-28%] bottom-[54%] h-auto w-[70%] -rotate-90 sm:right-0 sm:-bottom-[30%] sm:w-[45%] sm:-rotate-30"
+  />
+  <Picture
+    src={floral3}
+    alt=""
+    formats={formats}
+    fallbackFormat="webp"
+    width={1200}
+    widths={widths}
+    sizes="(min-width: 600px) 35vw, 70vw"
+    loading="eager"
+    class="absolute top-[-2%] right-[40%] h-[33%] w-[70%] rotate-180 sm:-top-[10%] sm:-right-[8%] sm:h-auto sm:w-[35%] sm:rotate-0"
+  />
+</section>
