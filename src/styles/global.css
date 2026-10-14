@@ -17,12 +17,20 @@
   --color-on-red: #ffffff;
   --color-on-beige: #000000;
 
+  --radius-card: 1.25rem;
+  --radius-panel: 2rem;
+
   --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   body {
     @apply bg-brand-beige font-sans text-on-beige;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
   }
 }
 

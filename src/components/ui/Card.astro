@@ -7,12 +7,12 @@ interface Props {
 }
 
 const { href, class: className } = Astro.props;
-const classes = ["flex flex-col items-center rounded-2xl p-4 shadow-md", className];
+const classes = ["flex flex-col items-center rounded-card p-4 shadow-md", className];
 ---
 
 {
   href ? (
-    <a {...linkAttrs(href)} class:list={[classes, "transition-transform hover:scale-105"]}>
+    <a {...linkAttrs(href)} class:list={[classes, "transition hover:-translate-y-1 hover:shadow-xl"]}>
       <slot />
     </a>
   ) : (

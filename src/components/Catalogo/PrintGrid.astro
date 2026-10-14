@@ -15,7 +15,7 @@ const sizes = "(min-width: 900px) 360px, (min-width: 600px) 45vw, 50vw";
 <ul class="mx-auto grid w-full max-w-6xl grid-cols-2 gap-3 px-4 pb-12 sm:gap-4 md:grid-cols-3 md:gap-6">
   {
     prints.map((print, index) => (
-      <li data-print={print.id} class="rounded-2xl bg-brand-red p-2 shadow-md sm:p-4">
+      <li data-print={print.id} class="rounded-card bg-brand-red p-2 shadow-md sm:p-4">
         <CatalogImage
           src={print.image}
           alt={`${name} – estampa ${print.id}`}
