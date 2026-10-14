@@ -1,0 +1,23 @@
+---
+import { linkAttrs } from "../../lib/links";
+
+interface Props {
+  href?: string;
+  class?: string;
+}
+
+const { href, class: className } = Astro.props;
+const classes = ["flex flex-col items-center rounded-2xl p-4 shadow-md", className];
+---
+
+{
+  href ? (
+    <a {...linkAttrs(href)} class:list={[classes, "transition-transform hover:scale-105"]}>
+      <slot />
+    </a>
+  ) : (
+    <div class:list={classes}>
+      <slot />
+    </div>
+  )
+}
