@@ -1,0 +1,32 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+}
+
+const { src, alt, width, height, class: className } = Astro.props;
+---
+
+<div
+  data-catalog-image
+  class:list={["group relative w-full overflow-hidden rounded-xl bg-on-red", className]}
+>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading="lazy"
+    decoding="async"
+    onerror="this.closest('[data-catalog-image]').dataset.broken='true';this.remove()"
+    class="h-full w-full object-cover"
+  />
+  <span
+    class="absolute inset-0 hidden items-center justify-center p-4 text-center text-lg text-on-beige group-data-[broken=true]:flex"
+  >
+    {alt}
+  </span>
+</div>

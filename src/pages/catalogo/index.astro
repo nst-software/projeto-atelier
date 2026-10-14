@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CatalogoCompleto from "../../components/Catalogo/CatalogoCompleto.astro";
+import CategoryGrid from "../../components/Catalogo/CategoryGrid.astro";
+import { siteConfig } from "../../config/site";
+import { sortCatalog } from "../../lib/catalog";
+
+const categories = sortCatalog(await getCollection("catalog"));
+---
+
+<BaseLayout
+  title="Catálogo"
+  description={`Catálogo de estampas ${siteConfig.name}: ${categories.map(({ data }) => data.name).join(", ")}.`}
+>
+  <h1 class="sr-only">Catálogo</h1>
+  <CatalogoCompleto />
+  <CategoryGrid categories={categories} />
+</BaseLayout>

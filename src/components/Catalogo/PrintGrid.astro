@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+import CatalogImage from "./CatalogImage.astro";
+
+interface Props {
+  category: CollectionEntry<"catalog">;
+}
+
+const { name, prints } = Astro.props.category.data;
+---
+
+<ul class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-4 pb-12 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+  {
+    prints.map((print) => (
+      <li data-print={print.id} class="rounded-2xl bg-brand-red p-4 shadow-md">
+        <CatalogImage
+          src={print.image}
+          alt={`${name} – estampa ${print.id}`}
+          width={600}
+          height={800}
+          class="aspect-[3/4]"
+        />
+      </li>
+    ))
+  }
+</ul>
