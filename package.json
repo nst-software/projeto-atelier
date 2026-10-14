@@ -11,7 +11,8 @@
     "check": "astro check",
     "test": "vitest run",
     "build:only": "astro build",
-    "build": "astro check && vitest run && astro build",
+    "build": "astro check && vitest run && astro build && yarn audit:dist",
+    "audit:dist": "node scripts/audit-head.mjs dist",
     "preview": "astro preview"
   },
   "devDependencies": {
