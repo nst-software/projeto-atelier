@@ -13,6 +13,7 @@
     "build:only": "astro build",
     "build": "astro check && vitest run && astro build && yarn audit:dist",
     "audit:dist": "node scripts/audit-head.mjs dist",
+    "check:urls": "node scripts/check-catalog-urls.mjs",
     "preview": "astro preview"
   },
   "devDependencies": {
