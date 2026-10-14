@@ -4,6 +4,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CatalogoCompleto from "../../components/Catalogo/CatalogoCompleto.astro";
 import PrintGrid from "../../components/Catalogo/PrintGrid.astro";
+import PageTitle from "../../components/ui/PageTitle.astro";
 import { siteConfig } from "../../config/site";
 
 export const getStaticPaths = (async () => {
@@ -24,7 +25,7 @@ const { name, cover } = category.data;
   description={`Estampas da categoria ${name} do catálogo ${siteConfig.name}.`}
   image={cover}
 >
-  <h1 class="mt-8 text-center text-3xl uppercase">{name}</h1>
+  <PageTitle class="mt-8 px-4 text-center">{name}</PageTitle>
   <CatalogoCompleto />
   <PrintGrid category={category} />
 </BaseLayout>

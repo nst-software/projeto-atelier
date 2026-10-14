@@ -8,4 +8,4 @@ const { level = 2, class: className } = Astro.props;
 const Tag = `h${level}` as "h2" | "h3";
 ---
 
-<Tag class:list={["text-center text-2xl font-normal uppercase", className]}><slot /></Tag>
+<Tag class:list={["text-center text-2xl font-normal uppercase tracking-widest sm:text-3xl", className]}><slot /></Tag>
