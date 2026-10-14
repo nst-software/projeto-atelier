@@ -46,3 +46,4 @@ User-invoked workflow:
 ## Known debt (don't fix unless asked)
 - Open Graph default image `/og-default.png` is referenced by the SEO builder but not added yet
 - Owner still to confirm: production origin `https://ateliertecidos.com.br` and footer using the store address
+- `scripts/check-catalog-migration.mjs` is a one-time check of the catalog collection against `legacy/`; delete it together with `legacy/`
