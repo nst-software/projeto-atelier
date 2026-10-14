@@ -1,0 +1,27 @@
+---
+import { siteConfig } from "../../config/site";
+import Card from "../ui/Card.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+
+const shortcuts = [
+  { label: "Entre em contato", href: siteConfig.whatsapp.url },
+  { label: "Ver catálogo", href: "/catalogo" },
+  { label: "Nossa loja", href: "/fale-conosco" },
+  { label: "O que fazemos", href: "/quem-somos" },
+];
+---
+
+<section class="flex flex-col items-center px-4 py-8">
+  <SectionTitle>O QUE PROCURA</SectionTitle>
+  <ul class="mt-8 grid w-full max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8 md:grid-cols-4">
+    {
+      shortcuts.map(({ label, href }) => (
+        <li>
+          <Card href={href} class="h-full justify-center rounded-lg border border-on-beige">
+            <h3 class="text-xl">{label}</h3>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,0 +1,43 @@
+---
+import Brush from "../icons/Brush.astro";
+import Collections from "../icons/Collections.astro";
+import Handyman from "../icons/Handyman.astro";
+import LocalFireDepartment from "../icons/LocalFireDepartment.astro";
+import Card from "../ui/Card.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+
+const activities = [
+  {
+    Icon: LocalFireDepartment,
+    text: "Trabalhamos com a técnica de estamparia digital por sublimação, um processo que transfere a arte para o tecido através do calor, garantindo cores vivas, alta durabilidade e toque imperceptível. Ideal para tecidos com base de poliéster, como crepes, microfibras, alfaiataria sintética, malhas, helancas, oxford, cetim e viscolycra, a sublimação permite personalização total, seja para moda, decoração ou produtos promocionais. Transformamos suas ideias em estampas com alta qualidade e produção sob medida.",
+  },
+  {
+    Icon: Handyman,
+    text: "Oferecemos o serviço completo de estamparia digital nas técnicas de sublimação (para tecidos de poliéster) e impressão direta (para fibras naturais). Você envia o tecido, escolhe as estampas, e nós cuidamos da produção com qualidade, tecnologia e acabamento profissional. Ideal para confecções, marcas autorais e designers que buscam personalização e agilidade.",
+  },
+  {
+    Icon: Collections,
+    text: "Oferecemos um acervo com mais de 40.000 estampas digitais disponíveis para aplicação em tecidos diversos, atendendo demandas de moda, decoração, cama, mesa, banho e produtos promocionais. Nosso portfólio é constantemente atualizado com base em pesquisas de tendências globais, garantindo variedade e atualidade em temas, cores e estilos.",
+  },
+  {
+    Icon: Brush,
+    text: "Para marcas que buscam exclusividade e posicionamento diferenciado, disponibilizamos o serviço de desenvolvimento de coleções personalizadas, com criações sob medida, alinhadas ao perfil estético e estratégico do cliente. Trabalhamos com estamparia digital por sublimação e impressão direta, garantindo versatilidade em bases têxteis e total controle de qualidade em cada etapa da produção.",
+  },
+];
+---
+
+<section class="flex flex-col items-center px-4 py-8">
+  <SectionTitle>NOSSAS ATIVIDADES</SectionTitle>
+  <ul class="mt-8 grid w-full max-w-screen-xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      activities.map(({ Icon, text }) => (
+        <li>
+          <Card class="h-full gap-4 rounded-3xl bg-brand-red text-on-red">
+            <Icon class="size-[70px] text-on-beige" />
+            <p class="text-center text-sm font-light">{text}</p>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</section>
