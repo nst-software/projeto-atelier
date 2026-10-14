@@ -1,16 +1,77 @@
 ---
 import { siteConfig } from "../config/site";
+import PlayArrow from "./icons/PlayArrow.astro";
 
 interface Props {
   class?: string;
 }
 
 const { class: className } = Astro.props;
-const { mediaId, aspect } = siteConfig.embeds.wistiaVideo;
+const { mediaId, aspect, poster } = siteConfig.embeds.wistiaVideo;
+const posterWidths = [640, 960, 1280];
+const posterUrl = (width: number) => `${poster}?image_crop_resized=${width}x${Math.round(width / aspect)}`;
 ---
 
-<script is:inline src="https://fast.wistia.com/player.js" async></script>
-<script is:inline src={`https://fast.wistia.com/embed/${mediaId}.js`} async type="module"></script>
-<div class:list={["w-full overflow-hidden rounded-3xl", className]}>
-  <wistia-player media-id={mediaId} aspect={aspect} class="block w-full" style={`aspect-ratio: ${aspect}`}></wistia-player>
+<div
+  data-wistia-facade
+  data-media-id={mediaId}
+  data-aspect={aspect}
+  class:list={["group relative w-full overflow-hidden rounded-3xl bg-brand-red-dark", className]}
+  style={`aspect-ratio: ${aspect}`}
+>
+  <img
+    src={posterUrl(960)}
+    srcset={posterWidths.map((width) => `${posterUrl(width)} ${width}w`).join(", ")}
+    sizes="(min-width: 1200px) 1000px, 90vw"
+    alt=""
+    width={960}
+    height={Math.round(960 / aspect)}
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <button
+    type="button"
+    aria-label="Assistir ao vídeo"
+    class="absolute inset-0 flex w-full items-center justify-center bg-on-beige/10 transition-colors hover:bg-on-beige/25"
+  >
+    <span
+      class="flex size-16 items-center justify-center rounded-full bg-brand-red text-on-red shadow-lg transition-transform group-hover:scale-110 sm:size-20"
+    >
+      <PlayArrow class="size-9 sm:size-11" />
+    </span>
+  </button>
 </div>
+
+<script>
+  let scriptsLoaded = false;
+
+  const loadScripts = (mediaId: string) => {
+    if (scriptsLoaded) return;
+    scriptsLoaded = true;
+    for (const { src, type } of [
+      { src: "https://fast.wistia.com/player.js", type: undefined },
+      { src: `https://fast.wistia.com/embed/${mediaId}.js`, type: "module" },
+    ]) {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      if (type) script.type = type;
+      document.head.append(script);
+    }
+  };
+
+  for (const facade of document.querySelectorAll<HTMLElement>("[data-wistia-facade]")) {
+    const { mediaId, aspect } = facade.dataset;
+    if (!mediaId) continue;
+    facade.querySelector("button")?.addEventListener("click", () => {
+      loadScripts(mediaId);
+      const player = document.createElement("wistia-player");
+      player.setAttribute("media-id", mediaId);
+      if (aspect) player.setAttribute("aspect", aspect);
+      player.setAttribute("autoplay", "");
+      player.className = "block h-full w-full";
+      facade.replaceChildren(player);
+    });
+  }
+</script>
