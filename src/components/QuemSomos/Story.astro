@@ -15,11 +15,11 @@ const paragraphs = [
 ];
 ---
 
-<section class="flex justify-center px-4 py-8">
+<section class="flex justify-center px-4 py-10">
   <div class="flex w-full max-w-screen-xl flex-col items-center gap-8 md:flex-row md:items-start">
-    <div class="flex flex-col gap-4 md:w-1/2">
+    <div class="flex flex-col gap-5 md:w-1/2">
       <PageTitle>{siteConfig.name}</PageTitle>
-      {paragraphs.map((text) => <p class="text-base sm:text-lg">{text}</p>)}
+      {paragraphs.map((text) => <p class="text-base leading-relaxed sm:text-lg">{text}</p>)}
     </div>
     <Picture
       src={photo}

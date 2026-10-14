@@ -4,6 +4,7 @@ import { linkAttrs } from "../../lib/links";
 import Call from "../icons/Call.astro";
 import Place from "../icons/Place.astro";
 import Button from "../ui/Button.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
 import LeafletMap from "./LeafletMap.astro";
 
 interface Props {
@@ -15,11 +16,11 @@ const { location, showWhatsapp = false } = Astro.props;
 const linkClass = "underline-offset-2 hover:text-brand-red hover:underline";
 ---
 
-<section class="mx-auto flex w-full max-w-screen-lg flex-col px-4 pt-8 sm:px-8">
-  <h2 class="text-3xl">{location.label}</h2>
+<section class="mx-auto flex w-full max-w-screen-lg flex-col px-4 pt-10 sm:px-8">
+  <SectionTitle class="text-left">{location.label}</SectionTitle>
   <hr class="my-5 w-full border-on-beige" />
-  <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
-    <address class="flex flex-col gap-3 not-italic sm:w-2/5">
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+    <address class="flex flex-col gap-3 text-lg not-italic sm:w-2/5">
       <p class="flex items-center gap-2">
         <Call class="size-5 shrink-0" />
         <span>
