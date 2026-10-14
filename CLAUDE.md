@@ -8,6 +8,7 @@ Keep this file lean. Detailed conventions live in skills (progressive disclosure
 - `yarn dev` | `yarn preview`
 - `yarn build` — THE gate: `astro check && vitest run && astro build && yarn audit:dist`. Netlify runs exactly this, so a type error, failing test, invalid data or a broken page head cannot deploy
 - `yarn run check` (`astro check`) | `yarn test` (`vitest run`) | `yarn build:only` (`astro build`) | `yarn audit:dist` (audits an existing `dist`) — for local iteration. Plain `yarn check` is yarn 1's built-in lockfile check, not the script
+- `yarn check:urls` — HEADs every catalog cover and print URL on GCS (must print `ok <n>/<n>`). Network-bound, not part of the build; run it after catalog data changes and before a cutover
 - No linter configured. Don't add ESLint unless asked
 - Hosted on **Netlify**; build config in `netlify.toml` (`yarn build`, publish `dist`, Node 22). `_redirects`, `robots.txt` and the sitemap are generated at build (never hand-edited); verify redirects with `netlify dev`, not `astro preview`
 
@@ -22,10 +23,10 @@ Keep this file lean. Detailed conventions live in skills (progressive disclosure
 - `src/assets/` — local images, always rendered through `astro:assets`
 - `scripts/audit-head.mjs` — plain-Node audit of `dist` (one title/description/canonical/OG/Twitter per page, unique titles and descriptions, production origin, `lang`, sitemap covers every page, robots.txt); its pure functions are unit-tested by `src/lib/head-audit.test.ts`
 - `scripts/generate-og-image.mjs` — regenerates `public/og-default.png` (1200×630, logo on the brand beige) with `sharp`
-- `legacy/` — the old React/Vite app, **read-only** migration source for copy, data and assets. Excluded from tsconfig, `astro check` and Vitest; never import from it. Deleted at the end of the migration
+- `scripts/check-catalog-urls.mjs` — catalog image URL health check (`yarn check:urls`)
 
 ## Core Rules (always apply)
-- Code, comments, commits, docs in **English**; user-facing UI text in **pt-BR**, migrated verbatim from `legacy/` unless the plan says otherwise
+- Code, comments, commits, docs in **English**; user-facing UI text in **pt-BR**
 - Comments: default to none. Only a non-obvious WHY, one terse line
 - Ask before assuming business facts (copy, contacts, prices, categories) — don't infer them from the repo
 - No business literal (phone, e-mail, URL, address, coordinates, hours) outside `src/config/site.ts`
@@ -47,5 +48,5 @@ User-invoked workflow:
 - Plans/PRDs live in `plans/<YYYY-MM-DD>/` and are committed
 
 ## Known debt (don't fix unless asked)
-- Owner still to confirm: production origin `https://ateliertecidos.com.br` and footer using the store address
-- `scripts/check-catalog-migration.mjs` is a one-time check of the catalog collection against `legacy/`; delete it together with `legacy/`
+- Owner still to confirm: production origin `https://ateliertecidos.com.br` (canonical, sitemap, robots, OG, JSON-LD)
+- Owner still to confirm: footer and JSON-LD show the store address (Av. São Paulo), not the production address the old footer showed

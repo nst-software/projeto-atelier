@@ -16,19 +16,18 @@ description: Atelier site conventions for src/ (Astro 7 static + Tailwind CSS v4
 - Third-party embed ids (Wistia, Elfsight) live in `siteConfig.embeds`; their script tags are `is:inline` and must appear once per page.
 - Pure logic in `src/lib/` as plain TS with a colocated `*.test.ts`. If it can be a function of data, it goes here, not in a `.astro` frontmatter.
 - Nav entries live in `src/config/routes.ts` (label + path). Header and Footer map over it.
-- `legacy/` is read-only reference: copy text/data/assets out of it, never import from it.
 - Relative imports, no path aliases.
 
 ## Business facts — site config
 - Every phone, e-mail, URL, address, coordinate, opening hour comes from `siteConfig` (`src/config/site.ts`). Derived values (`wa.me` URL, `tel:` href) are derived there or at the call site from config fields — never retyped.
-- Missing a fact? Ask; don't copy one from `legacy/` that the plan doesn't confirm.
+- Missing a fact? Ask; don't infer one from old commits or other pages.
 - Check: `grep -rnE "98442|3294|tecidosatelier@|instagram\.com|wa\.me|Av\. São Paulo|11 de Janeiro" src --exclude-dir=config` must print nothing.
 
 ## Catalog data
 - Catalog lives in an Astro JSON content collection (entry id = slug, `legacyId`, `name`, `cover`, `prints[{ id, image }]`), schema in the content config.
 - A whole-collection validator in `src/lib/` (unique slugs/legacy ids, cover present, prints non-empty, no duplicate image within a category) runs in the build and is imported by tests. Adding a category is a data-only change.
 - Tests assert invariants, never fixed counts or copied slug lists.
-- Catalog images stay remote GCS URLs with explicit `width`/`height`, `loading="lazy"` and a name fallback on error.
+- Catalog images stay remote GCS URLs with explicit `width`/`height`, `loading="lazy"` and a name fallback on error. After changing catalog URLs run `yarn check:urls` (must print `ok <n>/<n>`).
 
 ## Styling — Tailwind tokens
 - Tailwind utility classes in markup. Tokens are defined once in `@theme` in `src/styles/global.css`: `brand-beige(-light|-dark)`, `brand-red(-light|-dark)`, `on-red`, `on-beige`, `font-sans` (Lato), breakpoints `sm 600` / `md 900` / `lg 1200` / `xl 1536`.

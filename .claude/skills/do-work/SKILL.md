@@ -9,7 +9,7 @@ One phase at a time; atomic commits inside it. Never mix phases.
 
 ## 1. Understand
 - Read the PRD and plan from `plans/<YYYY-MM-DD>/` if there is one; identify the exact phase and its acceptance criteria
-- Read only the relevant code (Grep/Read) — not the whole repo. For migrated content, read the matching file under `legacy/` (read-only; never import it)
+- Read only the relevant code (Grep/Read) — not the whole repo.
 - Ambiguous, or a business fact is missing (copy, contacts, prices)? Stop and ask before writing code
 - Use Node 22 (`nvm use`) and confirm `yarn build` is green before editing, so any failure afterwards is yours
 
