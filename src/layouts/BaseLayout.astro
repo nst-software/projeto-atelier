@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { buildHead } from "../lib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const head = buildHead({ title, description, path: Astro.url.pathname, image });
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{head.title}</title>
+    <meta name="description" content={head.description} />
+    <link rel="canonical" href={head.canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:type" content={head.og.type} />
+    <meta property="og:locale" content={head.og.locale} />
+    <meta property="og:site_name" content={head.og.siteName} />
+    <meta property="og:title" content={head.og.title} />
+    <meta property="og:description" content={head.og.description} />
+    <meta property="og:url" content={head.og.url} />
+    <meta property="og:image" content={head.og.image} />
+    <meta name="twitter:card" content={head.twitter.card} />
+    <meta name="twitter:title" content={head.twitter.title} />
+    <meta name="twitter:description" content={head.twitter.description} />
+    <meta name="twitter:image" content={head.twitter.image} />
+  </head>
+  <body class="min-h-screen">
+    <Header />
+    <div id="page" class="pt-[110px]">
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

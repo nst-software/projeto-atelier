@@ -1,14 +1,10 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Atelier Tecidos</title>
-  </head>
-  <body>
-    <main class="p-4 text-brand-red">Atelier Tecidos</main>
-  </body>
-</html>
+<BaseLayout
+  title="Home"
+  description="Refletindo elegância, qualidade e estilo, nos dedicamos a oferecer tecidos e estampas que inspiram confiança e beleza."
+>
+  <h1 class="sr-only">Atelier Tecidos</h1>
+</BaseLayout>
