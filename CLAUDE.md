@@ -1,31 +1,32 @@
 # Atelier Tecidos — site
 
-Marketing site + fabric-print catalog for Atelier Tecidos. Static SPA: Vite 5 + React 18 + TypeScript + MUI 5 + React Router 6. No backend calls — content is hard-coded; catalog data lives in `src/catalogoItens/catalogo.js`, print images on the public GCS bucket `tecidosatelier_public`.
+Marketing site + fabric-print catalog for Atelier Tecidos. Fully static Astro 7 site, Tailwind CSS v4 (Vite plugin), TypeScript, no UI framework, no SSR adapter. Content is in the repo; catalog print images live on the public GCS bucket `tecidosatelier_public`.
 
 Keep this file lean. Detailed conventions live in skills (progressive disclosure).
 
-## Commands (yarn 1, vendored in `.yarn/releases`)
-- `yarn dev` | `yarn build` | `yarn preview`
-- `yarn build` is `vite build` only — it does NOT typecheck
-- Typecheck: `npx tsc --noEmit` — has pre-existing errors. Record the total count before editing; it must not grow
-- `yarn lint` is broken (ESLint 9 + legacy `.eslintrc.json`). Don't rely on it; don't fix it unless asked
-- Hosted on **Netlify** (build settings live in the Netlify UI). `yarn deploy` / `gh-pages` and `.github/workflows/main.yml` are legacy GitHub Pages leftovers — don't use them
+## Commands (Node 22 via `.nvmrc`; yarn 1, vendored in `.yarn/releases`)
+- `yarn dev` | `yarn preview`
+- `yarn build` — THE gate: `astro check && vitest run && astro build`. Netlify runs exactly this, so a type error, failing test or invalid data cannot deploy
+- `yarn run check` (`astro check`) | `yarn test` (`vitest run`) | `yarn build:only` (`astro build`) — for local iteration. Plain `yarn check` is yarn 1's built-in lockfile check, not the script
+- No linter configured. Don't add ESLint unless asked
+- Hosted on **Netlify**; build config in `netlify.toml` (`yarn build`, publish `dist`, Node 22). `_redirects` is generated at build (never hand-edited); verify redirects with `netlify dev`, not `astro preview`
 
 ## Project Structure
-- `src/main.tsx` — router + `ThemeProvider`. Routes: `/`, `/catalogo`, `/catalogo/:category_id`, `/fale-conosco`, `/quemSomos`
-- `src/App.tsx` — layout: Header + ScrollToTop + `<Outlet />` + Footer
-- `src/routes/` — pages: compose sections only, no logic
-- `src/components/<Page>/` — page sections (`Home/`, `QuemSomos/`, `FaleConosco/`, `Catalogo/`, `Prints/`); `Header.tsx`, `Footer.tsx` are global
-- `src/Style/Theme.ts` — MUI theme: single source for colors, typography, breakpoints
-- `src/utils/enums/Routes.ts` — nav slugs + pt-BR labels used by Header/Footer
-- `public/_redirects` — Netlify SPA fallback (`/* /index.html 200`)
+- `src/pages/` — routes (file-based). Pages compose sections and pass `title`/`description` to the layout, no logic
+- `src/layouts/BaseLayout.astro` — `<html lang="pt-BR">`, head from the SEO builder, Header, `#page` (main + Footer), global CSS
+- `src/components/` — `Header.astro`, `Footer.astro` (global) + one folder per page (`Home/`, …)
+- `src/config/site.ts` — every business fact (`siteConfig`); `src/config/routes.ts` — nav labels + paths
+- `src/lib/` — pure TS modules (SEO builder, later validators/generators), each with a colocated `*.test.ts`
+- `src/styles/global.css` — Tailwind import + `@theme` tokens (colors, font, breakpoints), body + scrollbar
+- `src/assets/` — local images, always rendered through `astro:assets`
+- `legacy/` — the old React/Vite app, **read-only** migration source for copy, data and assets. Excluded from tsconfig, `astro check` and Vitest; never import from it. Deleted at the end of the migration
 
 ## Core Rules (always apply)
-- Code, comments, commits, docs in **English**; user-facing UI text in **pt-BR**. Existing Portuguese identifiers (`FaleConosco`, `BalaoDeTexto1`…) stay — don't rename unless asked
+- Code, comments, commits, docs in **English**; user-facing UI text in **pt-BR**, migrated verbatim from `legacy/` unless the plan says otherwise
 - Comments: default to none. Only a non-obvious WHY, one terse line
 - Ask before assuming business facts (copy, contacts, prices, categories) — don't infer them from the repo
-- WhatsApp number, Instagram URL and address are duplicated across components — grep every occurrence when changing one
-- Don't commit large media (`src/assets/ImagemFundo1/*.png` are ~6 MB each already). Prefer GCS URLs
+- No business literal (phone, e-mail, URL, address, coordinates, hours) outside `src/config/site.ts`
+- Don't commit large media; prefer GCS URLs. Local images go through `astro:assets`; nothing in `dist` over 500 KB
 - Don't open images to "verify" visuals — Victor checks visuals himself
 - NEVER add co-author tags, "Generated with Claude" footers, or references to `.claude/`, skills or plan files in commits/PRs
 - `use-personal` before every commit/push (the `use-personal-before-git` hook does it automatically)
@@ -34,7 +35,7 @@ Keep this file lean. Detailed conventions live in skills (progressive disclosure
 
 ## Skills (progressive disclosure)
 Auto-invoked by task context:
-- `fe-conventions` — BEFORE editing any `.ts`/`.tsx` under `src/`
+- `fe-conventions` — BEFORE editing anything under `src/` (`.astro`, `.ts`, `.css`, data)
 
 User-invoked workflow:
 - `/grill-me` → `/write-a-prd` → `/prd-to-plan-generic` → `/adversarial-review plan` → `/do-work` → `/verify-before-done` → `/adversarial-review code` → `/code-review` → `/pr`
@@ -43,7 +44,5 @@ User-invoked workflow:
 - Plans/PRDs live in `plans/<YYYY-MM-DD>/` and are committed
 
 ## Known debt (don't fix unless asked)
-- `tsc` errors (unused imports, orphaned `src/routes/Catalogos/Abstratas.tsx`)
-- `@mui/styles` `makeStyles` is deprecated but is the dominant styling pattern
-- Dead files: `components/QuemSomos/oldAtividades`, `SelosDeQualidade.tsx` (returns `null`), `routes/QuemSomos copy.tsx` (live route, odd name)
-- Wistia/Elfsight embeds inject scripts on every mount without cleanup
+- Open Graph default image `/og-default.png` is referenced by the SEO builder but not added yet
+- Owner still to confirm: production origin `https://ateliertecidos.com.br` and footer using the store address

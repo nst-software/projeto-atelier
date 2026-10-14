@@ -34,7 +34,7 @@ Atomic commits, specific files only (never `-A`/`.`), English conventional messa
 plans/<date>/<topic>-plan.md, phase N — or "none: <one-line reason>"
 
 ## Test plan
-- [x] only checks actually performed (tsc count, yarn build, UI paths exercised)
+- [x] only checks actually performed (yarn build: astro check + vitest + astro build, UI paths exercised)
 
 ## Screenshots
 <!-- UI PRs only; delete otherwise -->

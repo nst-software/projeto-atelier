@@ -126,8 +126,8 @@ You are an adversarial reviewer. Your job is to find real problems, not to valid
 - Say explicitly when you could not verify a claim against real code, a test, or command output.
 - Flag pre-existing problems separately from problems this change introduces. Items under
   "Known debt" in the conventions are pre-existing by definition.
-- Skip anything `npx tsc --noEmit` already reports. `yarn lint` is broken, so lint-class
-  bugs (e.g. a missing hook dependency) ARE in scope.
+- Skip anything `yarn run check` (`astro check`) already reports. There is no linter, so
+  lint-class bugs (e.g. an unused variable hiding a logic error) ARE in scope.
 - Prose nits and wording preferences are not findings. A finding must name a scenario
   in which an agent or a human does the wrong thing. pt-BR UI copy is a business decision,
   not a finding.
@@ -174,7 +174,7 @@ Conventions are not a lens here — they go into the packet so every lens can ci
 
 ## 6. Verify every finding
 
-Before anything enters the report, check each claimed finding against reality — read the cited lines, run the cited command (`npx tsc --noEmit`, `yarn build`), reproduce the failure. A finding you cannot substantiate is **dropped**, not softened. A finding you *did* reproduce says so. A purely visual claim you can't settle from the code goes to Plausible for Victor — don't open images to check it.
+Before anything enters the report, check each claimed finding against reality — read the cited lines, run the cited command (`yarn run check`, `yarn test`, `yarn build`), reproduce the failure. A finding you cannot substantiate is **dropped**, not softened. A finding you *did* reproduce says so. A purely visual claim you can't settle from the code goes to Plausible for Victor — don't open images to check it.
 
 This is the step that makes the whole thing worth running. It is also the step it is most tempting to skip.
 
