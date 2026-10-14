@@ -1,0 +1,142 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/LogoEscrita.svg";
+import { navRoutes } from "../config/routes";
+import { siteConfig } from "../config/site";
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-40 h-[110px] bg-brand-beige shadow-[0_1px_2px_0_rgba(255,255,255,0.3),0_2px_6px_2px_rgba(255,255,255,0.15)]"
+>
+  <div class="mx-auto flex h-full max-w-screen-xl items-center justify-between px-4 md:justify-around">
+    <a href="/" class="mt-5 block h-[150px] shrink-0 sm:h-[180px]">
+      <Image src={logo} alt={siteConfig.name} class="h-full w-auto" loading="eager" />
+    </a>
+    <nav aria-label="Principal" class="hidden md:block">
+      <ul class="flex">
+        {
+          navRoutes.map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={currentPath === href ? "page" : undefined}
+                class="mx-4 block px-2 py-1.5 text-lg uppercase text-on-beige hover:text-brand-red aria-[current=page]:font-bold"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <button
+      type="button"
+      id="nav-drawer-open"
+      class="rounded p-3 text-on-beige md:hidden"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="nav-drawer"
+    >
+      <svg aria-hidden="true" viewBox="0 0 24 24" class="size-6 fill-current">
+        <path d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div
+  id="nav-drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu"
+  hidden
+  class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-brand-beige text-on-beige md:hidden"
+>
+  <button
+    type="button"
+    id="nav-drawer-close"
+    class="absolute top-4 left-4 rounded p-2"
+    aria-label="Fechar menu"
+  >
+    <svg aria-hidden="true" viewBox="0 0 24 24" class="size-8 fill-current">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20z"></path>
+    </svg>
+  </button>
+  <nav class="w-full">
+    <ul class="flex flex-col items-center">
+      {
+        navRoutes.map(({ label, href }) => (
+          <li class="w-full">
+            <a
+              href={href}
+              aria-current={currentPath === href ? "page" : undefined}
+              class="block w-full p-3 text-center text-lg font-semibold uppercase"
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const trigger = document.getElementById("nav-drawer-open") as HTMLButtonElement | null;
+  const drawer = document.getElementById("nav-drawer");
+  const closeButton = document.getElementById("nav-drawer-close");
+  const outside = [document.getElementById("page"), document.getElementById("site-header")];
+  const desktop = window.matchMedia("(min-width: 900px)");
+
+  if (trigger && drawer && closeButton) {
+    const focusables = () =>
+      Array.from(drawer.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"));
+
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const items = focusables();
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey && (active === first || !drawer.contains(active))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (active === last || !drawer.contains(active))) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    const open = () => {
+      drawer.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+      outside.forEach((element) => element && (element.inert = true));
+      document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", onKeydown);
+      closeButton.focus();
+    };
+
+    const close = (restoreFocus = true) => {
+      if (drawer.hidden) return;
+      drawer.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+      outside.forEach((element) => element && (element.inert = false));
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeydown);
+      if (restoreFocus) trigger.focus();
+    };
+
+    trigger.addEventListener("click", open);
+    closeButton.addEventListener("click", () => close());
+    drawer.querySelectorAll("a[href]").forEach((link) => link.addEventListener("click", () => close()));
+    desktop.addEventListener("change", (event) => event.matches && close(false));
+  }
+</script>

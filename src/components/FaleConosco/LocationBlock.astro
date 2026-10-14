@@ -1,0 +1,54 @@
+---
+import { siteConfig, type Location } from "../../config/site";
+import { linkAttrs } from "../../lib/links";
+import Call from "../icons/Call.astro";
+import Place from "../icons/Place.astro";
+import Button from "../ui/Button.astro";
+import LeafletMap from "./LeafletMap.astro";
+
+interface Props {
+  location: Location;
+  showWhatsapp?: boolean;
+}
+
+const { location, showWhatsapp = false } = Astro.props;
+const linkClass = "underline-offset-2 hover:text-brand-red hover:underline";
+---
+
+<section class="mx-auto flex w-full max-w-screen-lg flex-col px-4 pt-8 sm:px-8">
+  <h2 class="text-3xl">{location.label}</h2>
+  <hr class="my-5 w-full border-on-beige" />
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+    <address class="flex flex-col gap-3 not-italic sm:w-2/5">
+      <p class="flex items-center gap-2">
+        <Call class="size-5 shrink-0" />
+        <span>
+          <a href={`tel:${siteConfig.landline.tel}`} class={linkClass}>{siteConfig.landline.display}</a>
+          {
+            showWhatsapp && (
+              <>
+                {" / "}
+                <a {...linkAttrs(siteConfig.whatsapp.url)} class={linkClass}>
+                  {siteConfig.whatsapp.display}
+                </a>
+              </>
+            )
+          }
+        </span>
+      </p>
+      <p class="flex items-start gap-2">
+        <Place class="mt-0.5 size-5 shrink-0" />
+        <span class="flex flex-col">
+          {location.addressLines.map((line) => <span>{line}</span>)}
+        </span>
+      </p>
+    </address>
+    <div class="flex flex-col items-start gap-3 sm:w-3/5">
+      <LeafletMap lat={location.coordinates.lat} lng={location.coordinates.lng} label={location.label} />
+      <Button href={location.mapsUrl}>
+        <Place class="size-5" />
+        Abrir no Google Maps
+      </Button>
+    </div>
+  </div>
+</section>

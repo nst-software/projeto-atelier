@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# Atelier Tecidos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site and fabric-print catalog for Atelier Tecidos. A fully static [Astro](https://astro.build) site with Tailwind CSS v4 and TypeScript. Catalog data lives in `src/data/catalog.json`; print images are served from a public Google Cloud Storage bucket.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node 22 (see `.nvmrc`)
+- Yarn 1 (vendored in `.yarn/releases`, picked up automatically via `.yarnrc`)
 
-## Expanding the ESLint configuration
+## Commands
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+| Command | What it does |
+| --- | --- |
+| `yarn install --frozen-lockfile` | Install dependencies |
+| `yarn dev` | Local dev server |
+| `yarn build` | Full gate: `astro check`, `vitest run`, `astro build`, then the `dist` head/sitemap/robots audit |
+| `yarn preview` | Serve the built `dist` (does not apply redirects) |
+| `yarn run check` / `yarn test` | Type check / unit tests only |
+| `yarn check:urls` | Check that every catalog image URL returns 200 |
 
-- Configure the top-level `parserOptions` property like this:
+Redirects (`dist/_redirects`), `robots.txt` and the sitemap are generated during the build. To test redirects locally, serve `dist` with the Netlify CLI: `netlify dev --dir dist --framework '#static' --offline`.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+## Deploy
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+The site is hosted on Netlify. `netlify.toml` sets the build command (`yarn build`), the publish directory (`dist`) and Node 22. Netlify builds the `main` branch, so every merge into `main` goes live.

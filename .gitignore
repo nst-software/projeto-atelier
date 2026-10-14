@@ -9,7 +9,6 @@ lerna-debug.log*
 
 node_modules
 dist
-dist-ssr
 *.local
 
 # Editor directories and files
@@ -22,3 +21,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code local state
+.claude/runs/
+.claude/settings.local.json
+
+# Astro
+.astro/
+
+# Netlify CLI local state
+.netlify/
+deno.lock

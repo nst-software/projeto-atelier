@@ -1,0 +1,67 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageOutputFormat } from "astro";
+import floral1 from "../../assets/ImagemFundo1/floralBuque01.png";
+import floral2 from "../../assets/ImagemFundo1/floralBuque02.png";
+import floral3 from "../../assets/ImagemFundo1/floralBuque03.png";
+import { siteConfig } from "../../config/site";
+import Call from "../icons/Call.astro";
+import Instagram from "../icons/Instagram.astro";
+import Button from "../ui/Button.astro";
+
+const formats: ImageOutputFormat[] = ["avif", "webp"];
+const widths = [480, 800, 1200];
+---
+
+<section class="flex justify-center sm:px-4">
+  <div class="mt-16 flex w-full max-w-screen-xl flex-col-reverse overflow-hidden sm:w-[90%] sm:flex-row sm:rounded-[45px]">
+    <div class="flex aspect-16/10 w-full items-center justify-center bg-brand-red px-4 text-on-red sm:w-1/2">
+      <div class="flex w-[95%] flex-col items-start gap-4 sm:w-[70%]">
+        <h2 class="text-3xl font-bold md:text-4xl xl:text-5xl">ENTRE EM CONTATO COM NOSSOS REPRESENTANTES</h2>
+        <Button href={siteConfig.whatsapp.url}>
+          <Call class="size-6" />
+          Contato
+        </Button>
+      </div>
+    </div>
+    <div class="relative flex aspect-16/10 w-full items-center justify-center overflow-hidden bg-white sm:w-1/2">
+      <Picture
+        src={floral1}
+        alt=""
+        formats={formats}
+        fallbackFormat="webp"
+        width={1200}
+        widths={widths}
+        sizes="(min-width: 600px) 30vw, 60vw"
+        class="absolute top-0 -left-[20%] h-auto w-[60%]"
+      />
+      <Picture
+        src={floral2}
+        alt=""
+        formats={formats}
+        fallbackFormat="webp"
+        width={1200}
+        widths={widths}
+        sizes="(min-width: 600px) 30vw, 60vw"
+        class="absolute right-0 -bottom-[10%] h-auto w-[60%] -rotate-30"
+      />
+      <Picture
+        src={floral3}
+        alt=""
+        formats={formats}
+        fallbackFormat="webp"
+        width={1200}
+        widths={widths}
+        sizes="(min-width: 600px) 20vw, 40vw"
+        class="absolute -top-[10%] -right-[8%] h-auto w-[40%]"
+      />
+      <div class="z-10 flex w-3/4 flex-col items-center gap-3 rounded-lg bg-brand-red/90 p-4 text-on-red shadow-md sm:w-1/2">
+        <h3 class="text-center text-xl font-bold md:text-2xl xl:text-4xl">Acesse o Instagram!</h3>
+        <Button href={siteConfig.instagram.url}>
+          <Instagram class="size-5" />
+          Instagram
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

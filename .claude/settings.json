@@ -1,0 +1,55 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn dev)",
+      "Bash(yarn build)",
+      "Bash(yarn preview)",
+      "Bash(yarn install)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(gh pr view*)",
+      "Bash(gh pr list*)",
+      "Bash(yarn test)",
+      "Bash(yarn run check)",
+      "Bash(yarn build:only)",
+      "Bash(yarn audit:dist)"
+    ],
+    "ask": [
+      "Bash(gh pr merge*)",
+      "Bash(git push*main*)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push -f*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/use-personal-before-git.sh",
+            "statusMessage": "Selecting personal git identity...",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/detect-secrets.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

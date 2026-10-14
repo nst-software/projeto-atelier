@@ -1,0 +1,38 @@
+---
+import Build from "../icons/Build.astro";
+import Recycling from "../icons/Recycling.astro";
+import Update from "../icons/Update.astro";
+import Card from "../ui/Card.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+
+const missions = [
+  {
+    Icon: Update,
+    text: "Levar aos nossos clientes as atualizações do mercado, mantendo um contato próximo, para que todos os seus anseios tornem-se realidade.",
+  },
+  {
+    Icon: Build,
+    text: "Buscar o aprimoramento e as inovações que o mercado da moda exige, trabalhando com equipamentos e suprimentos que nos forneçam as TAP necessárias de padronização e exclusividade.",
+  },
+  {
+    Icon: Recycling,
+    text: "Promover uma cultura de excelência e sustentabilidade, garantindo que todos os nossos processos sejam realizados de forma ética e responsável, respeitando o meio ambiente e contribuindo para o desenvolvimento social.",
+  },
+];
+---
+
+<section class="flex flex-col items-center px-4 py-8">
+  <SectionTitle>NOSSA MISSÃO</SectionTitle>
+  <ul class="mt-8 grid w-full max-w-screen-lg grid-cols-1 gap-8 sm:grid-cols-3">
+    {
+      missions.map(({ Icon, text }) => (
+        <li>
+          <Card class="h-full gap-4 rounded-3xl bg-brand-red text-on-red">
+            <Icon class="size-[70px]" />
+            <p class="text-center font-light">{text}</p>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</section>

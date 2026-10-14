@@ -1,0 +1,11 @@
+---
+import { siteConfig } from "../../config/site";
+import SectionTitle from "../ui/SectionTitle.astro";
+---
+
+<section class="mt-8 flex flex-col items-center overflow-hidden px-4">
+  <SectionTitle>NOSSO INSTAGRAM</SectionTitle>
+  <script is:inline src="https://static.elfsight.com/platform/platform.js" data-use-service-core async></script>
+  <div class={`elfsight-app-${siteConfig.embeds.elfsightInstagramAppId} w-full max-w-screen-xl`} data-elfsight-app-lazy>
+  </div>
+</section>

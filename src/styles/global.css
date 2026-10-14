@@ -1,0 +1,41 @@
+@import "@fontsource/lato/latin-400.css";
+@import "@fontsource/lato/latin-700.css";
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 900px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1536px;
+
+  --color-brand-beige: #e4d2c1;
+  --color-brand-beige-light: #f0e3d6;
+  --color-brand-beige-dark: #c2b09d;
+  --color-brand-red: #ac0a0b;
+  --color-brand-red-light: #e34949;
+  --color-brand-red-dark: #7b0708;
+  --color-on-red: #ffffff;
+  --color-on-beige: #000000;
+
+  --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-beige font-sans text-on-beige;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-beige-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-red-dark);
+  border-radius: 200px;
+}

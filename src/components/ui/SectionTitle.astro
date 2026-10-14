@@ -1,0 +1,11 @@
+---
+interface Props {
+  level?: 2 | 3;
+  class?: string;
+}
+
+const { level = 2, class: className } = Astro.props;
+const Tag = `h${level}` as "h2" | "h3";
+---
+
+<Tag class:list={["text-center text-2xl font-normal uppercase", className]}><slot /></Tag>

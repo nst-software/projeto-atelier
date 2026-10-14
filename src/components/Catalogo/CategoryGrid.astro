@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "../ui/Card.astro";
+import CatalogImage from "./CatalogImage.astro";
+
+interface Props {
+  categories: CollectionEntry<"catalog">[];
+}
+
+const { categories } = Astro.props;
+---
+
+<ul class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-4 pb-12 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+  {
+    categories.map(({ id, data }) => (
+      <li>
+        <Card href={`/catalogo/${id}`} class="h-full bg-brand-red text-on-red">
+          <CatalogImage src={data.cover} alt={data.name} width={400} height={400} class="aspect-square" />
+          <h2 class="mt-4 text-center text-xl">{data.name}</h2>
+        </Card>
+      </li>
+    ))
+  }
+</ul>

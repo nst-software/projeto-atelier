@@ -1,0 +1,35 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageOutputFormat } from "astro";
+import photo from "../../assets/QuemSomos.jpeg";
+import { siteConfig } from "../../config/site";
+
+const formats: ImageOutputFormat[] = ["avif", "webp"];
+
+const paragraphs = [
+  "Fundada em 2005, na cidade de Goiânia-GO, o Atelier Estamparia Digital é fruto do sonho de sua proprietária Cléia Souza.",
+  "Realizando trabalhos com estampas manuais exclusivas, rapidamente a empresa passou a atuar nos mercados do Centro-Oeste, Nordeste e Sudeste.",
+  "Com a evolução do processo manual para o digital, a empresa modernizou, contando hoje com um moderno e amplo parque industrial em sua sede própria.",
+  "Chegamos a uma produção de mais de 120.000 metros por mês, sem abandonar a qualidade, a padronização, o desenvolvimento de estampas exclusivas e o compromisso com a pontualidade na entrega.",
+];
+---
+
+<section class="flex justify-center px-4 py-8">
+  <div class="flex w-full max-w-screen-xl flex-col items-center gap-8 md:flex-row md:items-start">
+    <div class="flex flex-col gap-4 md:w-1/2">
+      <h1 class="text-3xl font-bold sm:text-5xl">{siteConfig.name}</h1>
+      {paragraphs.map((text) => <p class="text-base sm:text-lg">{text}</p>)}
+    </div>
+    <Picture
+      src={photo}
+      alt={siteConfig.name}
+      formats={formats}
+      fallbackFormat="webp"
+      width={1200}
+      widths={[480, 800, 1200]}
+      sizes="(min-width: 900px) 40vw, 90vw"
+      loading="eager"
+      class="h-auto w-full rounded-3xl md:w-2/5"
+    />
+  </div>
+</section>

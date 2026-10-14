@@ -3,48 +3,33 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "deploy": "vite build && gh-pages -d dist"
+  "engines": {
+    "node": ">=22.12.0"
   },
-  "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.16.0",
-    "@mui/material": "^5.16.0",
-    "@mui/styles": "^5.16.0",
-    "@types/react-router-dom": "^5.3.3",
-    "gh-pages": "^6.1.1",
-    "leaflet": "^1.9.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-leaflet": "^4.2.1",
-    "react-router-dom": "^6.23.1"
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "test": "vitest run",
+    "build:only": "astro build",
+    "build": "astro check && vitest run && astro build && yarn audit:dist",
+    "audit:dist": "node scripts/audit-head.mjs dist",
+    "check:urls": "node scripts/check-catalog-urls.mjs",
+    "preview": "astro preview"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.9.12",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^9.5.0",
-    "eslint-config-next": "^13.4.7",
-    "eslint-config-prettier": "^8.9.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-import": "^2.28.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "eslint-plugin-security": "^3.0.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unused-imports": "^4.0.0",
-    "prettier": "3.3.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "@astrojs/check": "0.9.10",
+    "@astrojs/sitemap": "3.7.4",
+    "@emnapi/runtime": "1.11.3",
+    "@fontsource/lato": "5.3.0",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/leaflet": "1.9.20",
+    "@types/node": "22.20.5",
+    "astro": "7.3.8",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3",
+    "vitest": "5.0.4"
+  },
+  "dependencies": {
+    "leaflet": "1.9.4"
   }
 }

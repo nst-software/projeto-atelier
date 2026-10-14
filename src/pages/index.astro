@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandStatement from "../components/Home/BrandStatement.astro";
+import Contato from "../components/Home/Contato.astro";
+import Hero from "../components/Home/Hero.astro";
+import HighlightBanner from "../components/Home/HighlightBanner.astro";
+import InstagramFeed from "../components/Home/InstagramFeed.astro";
+import NossasAtividades from "../components/Home/NossasAtividades.astro";
+import OQueProcura from "../components/Home/OQueProcura.astro";
+import QuemSomos from "../components/Home/QuemSomos.astro";
+import { siteConfig } from "../config/site";
+---
+
+<BaseLayout
+  title={siteConfig.name}
+  description="Refletindo elegância, qualidade e estilo, nos dedicamos a oferecer tecidos e estampas que inspiram confiança e beleza."
+>
+  <Hero />
+  <HighlightBanner />
+  <BrandStatement />
+  <QuemSomos />
+  <OQueProcura />
+  <NossasAtividades />
+  <Contato />
+  <InstagramFeed />
+</BaseLayout>
