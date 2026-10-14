@@ -16,7 +16,8 @@ Keep this file lean. Detailed conventions live in skills (progressive disclosure
 - `src/layouts/BaseLayout.astro` — `<html lang="pt-BR">`, head from the SEO builder, Header, `#page` (main + Footer), global CSS
 - `src/components/` — `Header.astro`, `Footer.astro` (global) + one folder per page (`Home/`, …)
 - `src/config/site.ts` — every business fact (`siteConfig`); `src/config/routes.ts` — nav labels + paths
-- `src/lib/` — pure TS modules (SEO builder, later validators/generators), each with a colocated `*.test.ts`
+- `src/lib/` — pure TS modules (SEO builder, catalog validator, redirects builder), each with a colocated `*.test.ts`
+- `src/integrations/` — Astro build integrations, thin wrappers over `src/lib/` (e.g. `redirects.ts` writes `dist/_redirects` from the catalog data)
 - `src/styles/global.css` — Tailwind import + `@theme` tokens (colors, font, breakpoints), body + scrollbar
 - `src/assets/` — local images, always rendered through `astro:assets`
 - `legacy/` — the old React/Vite app, **read-only** migration source for copy, data and assets. Excluded from tsconfig, `astro check` and Vitest; never import from it. Deleted at the end of the migration
