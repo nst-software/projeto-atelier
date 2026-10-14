@@ -7,6 +7,7 @@ import staticFiles from "./src/integrations/static-files.ts";
 export default defineConfig({
   site: siteConfig.site,
   output: "static",
+  trailingSlash: "always",
   integrations: [
     sitemap({ filter: (page) => !/^\/404\/?$/.test(new URL(page).pathname) }),
     staticFiles(),

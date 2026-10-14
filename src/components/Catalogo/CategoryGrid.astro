@@ -17,7 +17,7 @@ const sizes = "(min-width: 900px) 360px, (min-width: 600px) 45vw, 50vw";
   {
     categories.map(({ id, data }, index) => (
       <li>
-        <Card href={`/catalogo/${id}`} class="h-full bg-brand-red p-2 text-on-red sm:p-4">
+        <Card href={`/catalogo/${id}/`} class="h-full bg-brand-red p-2 text-on-red sm:p-4">
           <CatalogImage
             src={data.cover}
             alt=""
