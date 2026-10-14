@@ -23,6 +23,10 @@ export interface SiteConfig {
     closes: string;
   };
   locations: { store: Location; production: Location };
+  embeds: {
+    wistiaVideo: { mediaId: string; aspect: number };
+    elfsightInstagramAppId: string;
+  };
 }
 
 function location(
@@ -85,5 +89,9 @@ export const siteConfig: SiteConfig = {
       mapsUrl:
         "https://www.google.com/maps/place/Atelier+Estamparia+Têxtil/@-16.6796345,-49.3069259,20z/data=!4m9!1m2!2m1!1sRua+11+de+Janeiro,+Qd+02,+Lt+01+e+02,+Vila+Aurora+Oeste,+Goiânia+-+GO,+Cep:+74425-100!3m5!1s0x935ef5858515cea9:0x468dcbe16a349116!8m2!3d-16.6797211!4d-49.3068142!16s%2Fg%2F11rsrrq2cc?entry=ttu&g_ep=EgoyMDI0MTAyMC4xIKXMDSoASAFQAw%3D%3D",
     }),
+  },
+  embeds: {
+    wistiaVideo: { mediaId: "k82pzy208k", aspect: 1.7843866171003717 },
+    elfsightInstagramAppId: "fa3cce2c-0b62-4540-8006-243f19d63006",
   },
 };

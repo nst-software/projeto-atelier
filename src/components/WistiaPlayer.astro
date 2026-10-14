@@ -1,0 +1,16 @@
+---
+import { siteConfig } from "../config/site";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const { mediaId, aspect } = siteConfig.embeds.wistiaVideo;
+---
+
+<script is:inline src="https://fast.wistia.com/player.js" async></script>
+<script is:inline src={`https://fast.wistia.com/embed/${mediaId}.js`} async type="module"></script>
+<div class:list={["w-full overflow-hidden rounded-3xl", className]}>
+  <wistia-player media-id={mediaId} aspect={aspect} class="block w-full" style={`aspect-ratio: ${aspect}`}></wistia-player>
+</div>
