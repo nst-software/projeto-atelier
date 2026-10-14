@@ -1,13 +1,23 @@
 ---
+import { buildSrcSet, netlifyImageUrl } from "../../lib/images";
+
 interface Props {
   src: string;
   alt: string;
   width: number;
   height: number;
+  widths: readonly number[];
+  sizes: string;
+  priority?: "high" | "eager" | "lazy";
   class?: string;
 }
 
-const { src, alt, width, height, class: className } = Astro.props;
+const { src, alt, width, height, widths, sizes, priority = "lazy", class: className } = Astro.props;
+
+// The CDN endpoint only exists on Netlify; astro dev serves the originals.
+const optimized = import.meta.env.PROD;
+const imageSrc = optimized ? netlifyImageUrl(src, widths[widths.length - 1]) : src;
+const srcset = optimized ? buildSrcSet(src, widths) : undefined;
 ---
 
 <div
@@ -15,11 +25,14 @@ const { src, alt, width, height, class: className } = Astro.props;
   class:list={["group relative w-full overflow-hidden rounded-xl bg-on-red", className]}
 >
   <img
-    src={src}
+    src={imageSrc}
+    srcset={srcset}
+    sizes={optimized ? sizes : undefined}
     alt={alt}
     width={width}
     height={height}
-    loading="lazy"
+    loading={priority === "lazy" ? "lazy" : "eager"}
+    fetchpriority={priority === "high" ? "high" : undefined}
     decoding="async"
     onerror="this.closest('[data-catalog-image]').dataset.broken='true';this.remove()"
     class="h-full w-full object-cover"
