@@ -4,14 +4,14 @@ export interface RedirectSource {
 }
 
 export const STATIC_REDIRECTS: readonly (readonly [from: string, to: string])[] = [
-  ["/quemSomos", "/quem-somos"],
+  ["/quemSomos", "/quem-somos/"],
 ];
 
 export function buildRedirectLines(entries: RedirectSource[]): string[] {
   const rules = [
     ...[...entries]
       .sort((a, b) => a.legacyId - b.legacyId)
-      .map((entry) => [`/catalogo/${entry.legacyId}`, `/catalogo/${entry.id}`] as const),
+      .map((entry) => [`/catalogo/${entry.legacyId}`, `/catalogo/${entry.id}/`] as const),
     ...STATIC_REDIRECTS,
   ];
   return rules.map(([from, to]) => `${from} ${to} 301`);

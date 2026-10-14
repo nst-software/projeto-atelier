@@ -4,6 +4,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config/site";
 import { buildHead, buildLocalBusinessJsonLd } from "../lib/seo";
+import lato400 from "@fontsource/lato/files/lato-latin-400-normal.woff2?url";
+import lato700 from "@fontsource/lato/files/lato-latin-700-normal.woff2?url";
 
 interface Props {
   title: string;
@@ -24,6 +26,8 @@ const head = buildHead({ title, description, path: Astro.url.pathname, image });
     <meta name="description" content={head.description} />
     <link rel="canonical" href={head.canonical} />
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href={lato400} />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href={lato700} />
     <meta property="og:type" content={head.og.type} />
     <meta property="og:locale" content={head.og.locale} />
     <meta property="og:site_name" content={head.og.siteName} />

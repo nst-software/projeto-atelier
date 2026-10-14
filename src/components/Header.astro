@@ -4,7 +4,7 @@ import logo from "../assets/LogoEscrita.svg";
 import { navRoutes } from "../config/routes";
 import { siteConfig } from "../config/site";
 
-const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const currentPath = Astro.url.pathname;
 ---
 
 <header
@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
   class="fixed inset-x-0 top-0 z-40 h-[110px] bg-brand-beige shadow-[0_1px_2px_0_rgba(255,255,255,0.3),0_2px_6px_2px_rgba(255,255,255,0.15)]"
 >
   <div class="mx-auto flex h-full max-w-screen-xl items-center justify-between px-4 md:justify-around">
-    <a href="/" class="mt-5 block h-[150px] shrink-0 sm:h-[180px]">
+    <a href="/" class="block h-[72px] shrink-0 rounded sm:h-[84px]">
       <Image src={logo} alt={siteConfig.name} class="h-full w-auto" loading="eager" />
     </a>
     <nav aria-label="Principal" class="hidden md:block">
@@ -23,7 +23,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
               <a
                 href={href}
                 aria-current={currentPath === href ? "page" : undefined}
-                class="mx-4 block px-2 py-1.5 text-lg uppercase text-on-beige hover:text-brand-red aria-[current=page]:font-bold"
+                class="block rounded px-5 py-2 text-lg uppercase tracking-wide text-on-beige underline-offset-8 transition-colors hover:text-brand-red aria-[current=page]:font-bold aria-[current=page]:text-brand-red aria-[current=page]:underline aria-[current=page]:decoration-2"
               >
                 {label}
               </a>
@@ -66,14 +66,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     </svg>
   </button>
   <nav class="w-full">
-    <ul class="flex flex-col items-center">
+    <ul class="flex flex-col items-center gap-2">
       {
         navRoutes.map(({ label, href }) => (
           <li class="w-full">
             <a
               href={href}
               aria-current={currentPath === href ? "page" : undefined}
-              class="block w-full p-3 text-center text-lg font-semibold uppercase"
+              class="block w-full rounded py-4 text-center text-xl font-bold uppercase tracking-wide aria-[current=page]:text-brand-red"
             >
               {label}
             </a>

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { navRoutes } from "../config/routes";
 import { siteConfig } from "../config/site";
 import { isExternal, linkAttrs } from "./links";
 
@@ -13,7 +14,13 @@ describe("linkAttrs", () => {
   });
 
   it("keeps internal paths in the same tab", () => {
-    expect(isExternal("/catalogo")).toBe(false);
-    expect(linkAttrs("/quem-somos")).toEqual({ href: "/quem-somos" });
+    expect(isExternal("/catalogo/")).toBe(false);
+    expect(linkAttrs("/quem-somos/")).toEqual({ href: "/quem-somos/" });
+  });
+});
+
+describe("navRoutes", () => {
+  it("uses the trailing-slash form so navigation never hits the Netlify 301", () => {
+    for (const { href } of navRoutes) expect(href.endsWith("/")).toBe(true);
   });
 });

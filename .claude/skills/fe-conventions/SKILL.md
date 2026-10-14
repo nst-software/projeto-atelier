@@ -13,7 +13,7 @@ description: Atelier site conventions for src/ (Astro 7 static + Tailwind CSS v4
   - `Card.astro` — rounded shadowed box; `<a>` when `href` is set (same external handling), `<div>` otherwise.
   - `SectionTitle.astro` — centered uppercase section heading, `level` 2 (default) or 3.
 - Icons in `src/components/icons/<MaterialName>.astro`: inline SVG with the Material icon path, 24x24 viewBox, `fill="currentColor"`, `aria-hidden="true"`, `class` passthrough. No icon packages.
-- Third-party embed ids (Wistia, Elfsight) live in `siteConfig.embeds`; their script tags are `is:inline` and must appear once per page.
+- Third-party embed ids (Wistia, Elfsight) live in `siteConfig.embeds`. Elfsight is a declarative `is:inline` script tag (once per page). Wistia is a poster facade (`WistiaPlayer.astro`) that injects the player scripts only on click; never add the Wistia script tags statically.
 - Pure logic in `src/lib/` as plain TS with a colocated `*.test.ts`. If it can be a function of data, it goes here, not in a `.astro` frontmatter.
 - Nav entries live in `src/config/routes.ts` (label + path). Header and Footer map over it.
 - Relative imports, no path aliases.
@@ -27,7 +27,7 @@ description: Atelier site conventions for src/ (Astro 7 static + Tailwind CSS v4
 - Catalog lives in an Astro JSON content collection (entry id = slug, `legacyId`, `name`, `cover`, `prints[{ id, image }]`), schema in the content config.
 - A whole-collection validator in `src/lib/` (unique slugs/legacy ids, cover present, prints non-empty, no duplicate image within a category) runs in the build and is imported by tests. Adding a category is a data-only change.
 - Tests assert invariants, never fixed counts or copied slug lists.
-- Catalog images stay remote GCS URLs with explicit `width`/`height`, `loading="lazy"` and a name fallback on error. After changing catalog URLs run `yarn check:urls` (must print `ok <n>/<n>`).
+- Catalog images stay remote GCS URLs in the data; `CatalogImage.astro` serves them through the Netlify Image CDN (`src/lib/images.ts` builds `/.netlify/images?url=…&w=…` srcsets, the bucket is allow-listed in `netlify.toml`) with explicit `width`/`height`, a `priority` prop for the first row and a name fallback on error. `astro dev` shows the originals; `netlify dev` exercises the CDN. After changing catalog URLs run `yarn check:urls` (must print `ok <n>/<n>`).
 
 ## Styling — Tailwind tokens
 - Tailwind utility classes in markup. Tokens are defined once in `@theme` in `src/styles/global.css`: `brand-beige(-light|-dark)`, `brand-red(-light|-dark)`, `on-red`, `on-beige`, `font-sans` (Lato), breakpoints `sm 600` / `md 900` / `lg 1200` / `xl 1536`.
@@ -37,7 +37,7 @@ description: Atelier site conventions for src/ (Astro 7 static + Tailwind CSS v4
 
 ## Components and scripts
 - `.astro` components: `interface Props` in the frontmatter, destructure `Astro.props`. One component per file.
-- No UI framework. Client JS only as a vanilla `<script>` in the component that needs it (drawer, Leaflet, embeds). Third-party embeds are declarative script tags, no imperative injection.
+- No UI framework. Client JS only as a vanilla `<script>` in the component that needs it (drawer, Leaflet, Wistia facade). Elfsight stays a declarative script tag.
 - Links are `<a href>`; buttons only for in-page actions. Icon-only controls get `aria-label`; decorative images `alt=""`.
 - Local images: `astro:assets` `<Image>`/`<Picture>` with `widths` + `sizes`; formats AVIF/WebP, no file in `dist` over 500 KB.
 - Formatting (Prettier config at root): double quotes, semicolons, trailing commas, 2 spaces.

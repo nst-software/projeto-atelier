@@ -5,9 +5,9 @@ import SectionTitle from "../ui/SectionTitle.astro";
 
 const shortcuts = [
   { label: "Entre em contato", href: siteConfig.whatsapp.url },
-  { label: "Ver catálogo", href: "/catalogo" },
-  { label: "Nossa loja", href: "/fale-conosco" },
-  { label: "O que fazemos", href: "/quem-somos" },
+  { label: "Ver catálogo", href: "/catalogo/" },
+  { label: "Nossa loja", href: "/fale-conosco/" },
+  { label: "O que fazemos", href: "/quem-somos/" },
 ];
 ---
 
@@ -17,8 +17,8 @@ const shortcuts = [
     {
       shortcuts.map(({ label, href }) => (
         <li>
-          <Card href={href} class="h-full justify-center rounded-lg border border-on-beige">
-            <h3 class="text-xl">{label}</h3>
+          <Card href={href} class="h-full justify-center border border-on-beige transition-colors hover:border-brand-red hover:bg-brand-beige-light">
+            <h3 class="text-center text-lg font-bold">{label}</h3>
           </Card>
         </li>
       ))

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { PRINT_WIDTHS } from "../../lib/images";
 import CatalogImage from "./CatalogImage.astro";
 
 interface Props {
@@ -7,17 +8,22 @@ interface Props {
 }
 
 const { name, prints } = Astro.props.category.data;
+const EAGER_COUNT = 3;
+const sizes = "(min-width: 900px) 360px, (min-width: 600px) 45vw, 50vw";
 ---
 
-<ul class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-4 pb-12 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+<ul class="mx-auto grid w-full max-w-6xl grid-cols-2 gap-3 px-4 pb-12 sm:gap-4 md:grid-cols-3 md:gap-6">
   {
-    prints.map((print) => (
-      <li data-print={print.id} class="rounded-2xl bg-brand-red p-4 shadow-md">
+    prints.map((print, index) => (
+      <li data-print={print.id} class="rounded-card bg-brand-red p-2 shadow-md sm:p-4">
         <CatalogImage
           src={print.image}
           alt={`${name} – estampa ${print.id}`}
           width={600}
           height={800}
+          widths={PRINT_WIDTHS}
+          sizes={sizes}
+          priority={index === 0 ? "high" : index < EAGER_COUNT ? "eager" : "lazy"}
           class="aspect-[3/4]"
         />
       </li>

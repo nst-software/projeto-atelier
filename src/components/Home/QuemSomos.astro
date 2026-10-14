@@ -4,20 +4,20 @@ import Button from "../ui/Button.astro";
 ---
 
 <section class="flex justify-center px-2 sm:px-4">
-  <div class="w-full max-w-screen-xl overflow-hidden rounded-3xl bg-brand-red text-on-red">
-    <div class="mx-[5%] flex max-w-[90%] flex-col pt-8 sm:mx-[10%] sm:max-w-[70%]">
-      <h2 class="text-xl font-light">QUEM SOMOS</h2>
-      <p class="text-2xl font-semibold">ATELIER TECIDOS E ESTAMPARIA</p>
-      <p class="text-xl font-light">
+  <div class="w-full max-w-screen-xl overflow-hidden rounded-panel bg-brand-red text-on-red">
+    <div class="flex flex-col gap-2 px-6 pt-10 sm:px-12 sm:max-w-[70%]">
+      <h2 class="text-base uppercase tracking-widest">QUEM SOMOS</h2>
+      <p class="text-2xl font-bold sm:text-3xl">ATELIER TECIDOS E ESTAMPARIA</p>
+      <p class="text-lg leading-relaxed">
         Nosso propósito é oferecer tecidos que unem qualidade e design, ajudando nossos clientes a criar peças que
         expressem sua personalidade com estilo e sofisticação.
       </p>
     </div>
-    <div class="flex justify-center px-4 py-8">
+    <div class="flex justify-center px-4 py-8 sm:px-12">
       <WistiaPlayer class="sm:w-4/5" />
     </div>
-    <div class="flex justify-center pb-8">
-      <Button href="/quem-somos">Saiba mais</Button>
+    <div class="flex justify-center pb-10">
+      <Button href="/quem-somos/">Saiba mais</Button>
     </div>
   </div>
 </section>

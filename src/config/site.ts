@@ -24,7 +24,7 @@ export interface SiteConfig {
   };
   locations: { store: Location; production: Location };
   embeds: {
-    wistiaVideo: { mediaId: string; aspect: number };
+    wistiaVideo: { mediaId: string; aspect: number; poster: string };
     elfsightInstagramAppId: string;
   };
 }
@@ -91,7 +91,11 @@ export const siteConfig: SiteConfig = {
     }),
   },
   embeds: {
-    wistiaVideo: { mediaId: "k82pzy208k", aspect: 1.7843866171003717 },
+    wistiaVideo: {
+      mediaId: "k82pzy208k",
+      aspect: 1.7843866171003717,
+      poster: "https://embed-ssl.wistia.com/deliveries/4c89903be5c87c2f29e7a0efc1eab434.jpg",
+    },
     elfsightInstagramAppId: "fa3cce2c-0b62-4540-8006-243f19d63006",
   },
 };
