@@ -7,7 +7,13 @@ description: Atelier site conventions for src/ (Astro 7 static + Tailwind CSS v4
 
 ## Layout
 - Routes in `src/pages/` (file-based). Thin: wrap in `BaseLayout` with `title` (no suffix — the SEO builder adds " | Atelier Tecidos") and a unique pt-BR `description`, compose sections, nothing else.
-- Page sections in `src/components/<Page>/` (PascalCase folder per page). Cross-page pieces (Header, Footer, buttons, section titles) at `src/components/` root.
+- Page sections in `src/components/<Page>/` (PascalCase folder per page). Cross-page pieces (Header, Footer, `WistiaPlayer`) at `src/components/` root.
+- Primitives in `src/components/ui/` — reuse before writing new markup:
+  - `Button.astro` — CTA `<a>` (`href`, `class`); external URLs get `target="_blank" rel="noopener noreferrer"` via `linkAttrs` (`src/lib/links.ts`).
+  - `Card.astro` — rounded shadowed box; `<a>` when `href` is set (same external handling), `<div>` otherwise.
+  - `SectionTitle.astro` — centered uppercase section heading, `level` 2 (default) or 3.
+- Icons in `src/components/icons/<MaterialName>.astro`: inline SVG with the Material icon path, 24x24 viewBox, `fill="currentColor"`, `aria-hidden="true"`, `class` passthrough. No icon packages.
+- Third-party embed ids (Wistia, Elfsight) live in `siteConfig.embeds`; their script tags are `is:inline` and must appear once per page.
 - Pure logic in `src/lib/` as plain TS with a colocated `*.test.ts`. If it can be a function of data, it goes here, not in a `.astro` frontmatter.
 - Nav entries live in `src/config/routes.ts` (label + path). Header and Footer map over it.
 - `legacy/` is read-only reference: copy text/data/assets out of it, never import from it.
