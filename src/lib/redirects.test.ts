@@ -14,12 +14,16 @@ describe("buildRedirectLines with the real catalog", () => {
   it("maps every legacyId exactly once to its slug", () => {
     for (const entry of catalog) {
       const matches = lines.filter((line) => line.startsWith(`/catalogo/${entry.legacyId} `));
-      expect(matches).toEqual([`/catalogo/${entry.legacyId} /catalogo/${entry.id} 301`]);
+      expect(matches).toEqual([`/catalogo/${entry.legacyId} /catalogo/${entry.id}/ 301`]);
     }
   });
 
   it("includes the /quemSomos rule", () => {
-    expect(lines).toContain("/quemSomos /quem-somos 301");
+    expect(lines).toContain("/quemSomos /quem-somos/ 301");
+  });
+
+  it("targets the trailing-slash form so Netlify does not add a second hop", () => {
+    for (const line of lines) expect(line.split(" ")[1].endsWith("/")).toBe(true);
   });
 
   it("has only well-formed 301 lines without duplicates", () => {
