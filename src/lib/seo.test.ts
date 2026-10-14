@@ -13,6 +13,12 @@ describe("buildHead", () => {
     expect(buildHead(input).title).toBe(`Catálogo | ${siteConfig.name}`);
   });
 
+  it("uses the bare brand name when the page title is the brand", () => {
+    const head = buildHead({ ...input, title: siteConfig.name, path: "/" });
+    expect(head.title).toBe(siteConfig.name);
+    expect(head.og.title).toBe(siteConfig.name);
+  });
+
   it("builds the canonical URL on the production origin", () => {
     const head = buildHead(input);
     expect(head.canonical).toBe(`${siteConfig.site}/catalogo`);

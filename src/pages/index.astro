@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Home/Hero.astro";
+import { siteConfig } from "../config/site";
 ---
 
 <BaseLayout
-  title="Home"
+  title={siteConfig.name}
   description="Refletindo elegância, qualidade e estilo, nos dedicamos a oferecer tecidos e estampas que inspiram confiança e beleza."
 >
   <Hero />

@@ -38,7 +38,7 @@ export function buildHead(
   { title, description, path, image }: HeadInput,
   config: SiteConfig = defaultSiteConfig,
 ): HeadData {
-  const fullTitle = `${title} | ${config.name}`;
+  const fullTitle = title === config.name ? title : `${title} | ${config.name}`;
   const canonical = absoluteUrl(path, config.site);
   const imageUrl = absoluteUrl(image ?? DEFAULT_OG_IMAGE, config.site);
 
