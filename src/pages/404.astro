@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<BaseLayout title="Página não encontrada" description="A página que você procura não existe.">
+  <section class="flex flex-col items-center gap-6 px-4 py-16 text-center">
+    <h1 class="text-3xl uppercase">Página não encontrada</h1>
+    <div class="flex flex-col gap-4 sm:flex-row">
+      <Button href="/">Voltar ao início</Button>
+      <Button href="/catalogo">Ver catálogo</Button>
+    </div>
+  </section>
+</BaseLayout>
