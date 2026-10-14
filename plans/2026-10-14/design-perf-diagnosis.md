@@ -298,3 +298,43 @@ Decisions needed from Victor before implementation:
 
 Suggested order of PRs on `feat/design-polish` (off `feat/astro-migration`): perf items 1–7 first (each with a
 Lighthouse before/after appended to this file), then design items 8–12 as `style:` commits, then the low items.
+
+## 5. After — PR #4 deploy preview (2026-10-14)
+
+Same Lighthouse setup as section 1 (only `*/.netlify/scripts/*` blocked now, so the image CDN is measured), deploy
+preview of PR #4 (the polish branch rebased onto `main` after PR #2 was squash-merged).
+
+Mobile:
+
+| Route | Perf before → after | LCP before → after | Bytes before → after | CLS |
+| --- | --- | --- | --- | --- |
+| `/` | 62–90 → **95** | 7.0 s → 2.9 s | 7.4 MB → 0.3 MB | 0 |
+| `/catalogo/` | 75 → **96** | 29.7 s → 2.8 s | 24.0 MB → 1.4 MB | 0 |
+| `/catalogo/abstratas/` | 89 → **99** | 3.7 s → 1.9 s | 1.5 MB → 1.9 MB (all 38 prints now within budget, grid is 2-col) | 0 |
+| `/quem-somos/` | 60 → **100** | 7.0 s → 1.3 s | 7.4 MB → 0.13 MB | 0.095 → 0 |
+| `/fale-conosco/` | 96 → **93** | 2.6 s → 3.2 s | 0.35 MB → 0.28 MB | 0 |
+
+Desktop:
+
+| Route | Perf before → after | LCP before → after | Bytes before → after | CLS |
+| --- | --- | --- | --- | --- |
+| `/` | 97 → **100** | 1.3 s → 0.5 s | 18.1 MB → 0.4 MB | 0 |
+| `/catalogo/` | 75 → **97** | 14.1 s → 1.1 s | 49.1 MB → 1.4 MB | 0 |
+| `/catalogo/abstratas/` | 95 → **97** | 1.5 s → 1.3 s | 5.3 MB → 1.6 MB | 0 |
+| `/quem-somos/` | 97 → **100** | 0.3 s → 0.5 s | 12.5 MB → 0.14 MB | 0.103 → 0 |
+| `/fale-conosco/` | 99 → **99** | 0.9 s → 0.8 s | 0.42 MB → 0.42 MB | 0 |
+
+Accessibility 100 and best practices 100 on every route (Fale Conosco mobile BP 96 is the Leaflet tile
+`image-size-responsive` audit, unchanged). SEO 69 is still only the preview `noindex` header. Fale Conosco mobile moved
+within run-to-run variance (the LCP is an OpenStreetMap tile either way).
+
+Browser checks on the preview (puppeteer, same script as section 2):
+
+- Home: one Wistia request before the click (the poster), 45 after; the `wistia-player` upgrades with a shadow root.
+- `/catalogo/`: 19 CDN responses, all 200 `image/webp`, 854 KB for every cover; page 2,994 px tall at 375 px (was 8,311).
+- `/catalogo/abstratas/`: 38 CDN responses, all 200, 1,382 KB for the whole category; 5,134 px tall (was 18,303); no
+  broken-image fallback triggered.
+- No horizontal overflow on any route at 320 / 375 / 768 / 1440 px.
+- Maps: the first initialises on load (6 tiles, 1 marker), the second only after scrolling into view (4 tiles, 1 marker).
+- `/_astro/*` served with `cache-control: public,max-age=31536000,immutable`; `/catalogo/1` → 301 `/catalogo/abstratas/`
+  (one hop).
